@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LEE YUNA — 3D Artist</title>
+<title>LEE YUNA ??3D Artist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,7 +26,7 @@
     cursor: none;
   }
 
-  /* ── CURSOR ── */
+  /* ?? CURSOR ?? */
   .cursor {
     width: 8px; height: 8px;
     background: var(--white);
@@ -43,7 +44,7 @@
     border: 1px solid var(--white);
   }
 
-  /* ── NAV ── */
+  /* ?? NAV ?? */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -77,7 +78,7 @@
   }
   .nav-links a:hover { color: var(--white); }
 
-  /* ── HERO ── */
+  /* ?? HERO ?? */
   #hero {
     height: 100vh;
     display: flex;
@@ -197,7 +198,7 @@
     50%       { width: 50px; opacity: 1; }
   }
 
-  /* ── SECTION COMMON ── */
+  /* ?? SECTION COMMON ?? */
   section { padding: 120px 48px; }
 
   .section-header {
@@ -222,7 +223,7 @@
     letter-spacing: 0.08em;
   }
 
-  /* ── WORKS GRID ── */
+  /* ?? WORKS GRID ?? */
   #works {
     padding: 110px 0 120px;
     border-top: 1px solid #102233;
@@ -395,7 +396,7 @@
     grid-row: span 3;
   }
 
-  /* ── ABOUT ── */
+  /* ?? ABOUT ?? */
   #about .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -473,7 +474,7 @@
     color: var(--white);
   }
 
-  /* ── INTERIOR (선택 섹션) ── */
+  /* ?? INTERIOR (?좏깮 ?뱀뀡) ?? */
   #interior .interior-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -496,7 +497,7 @@
 
   .interior-item:hover img { transform: scale(1.06); }
 
-  /* ── CONTACT ── */
+  /* ?? CONTACT ?? */
   #contact {
     padding-bottom: 160px;
   }
@@ -559,7 +560,7 @@
     color: var(--white);
   }
 
-  /* ── FOOTER ── */
+  /* ?? FOOTER ?? */
   footer {
     padding: 32px 48px;
     border-top: 1px solid #1a1a1a;
@@ -574,7 +575,7 @@
     letter-spacing: 0.08em;
   }
 
-  /* ── PAGE TRANSITION ── */
+  /* ?? PAGE TRANSITION ?? */
   .page-loader {
     position: fixed;
     inset: 0;
@@ -604,7 +605,7 @@
     50%       { opacity: 1; }
   }
 
-  /* ── MOBILE ── */
+  /* ?? MOBILE ?? */
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
     .nav-links { gap: 20px; }
@@ -641,6 +642,389 @@
     #interior .interior-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
   }
+
+  /* Reference layout pass */
+  :root {
+    --txt: #ddd8cc;
+    --t2: rgba(221,216,204,.42);
+    --t3: rgba(221,216,204,.14);
+    --ac: #33aaff;
+    --bd: rgba(221,216,204,.07);
+    --M: 'IBM Plex Mono', monospace;
+    --D: 'Bebas Neue', Impact, sans-serif;
+    --B: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  body {
+    background: #080808;
+    color: var(--txt);
+    font-family: var(--B);
+    letter-spacing: 0;
+  }
+
+  nav {
+    height: 44px;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(51,170,255,.28);
+    background: rgba(8,8,8,.82);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-l {
+    font-family: var(--D);
+    font-size: 14px;
+    letter-spacing: .18em;
+    color: rgba(221,216,204,.7);
+  }
+
+  .nav-r {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links {
+    gap: 34px;
+  }
+
+  .nav-links a {
+    font-family: var(--M);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: rgba(221,216,204,.48);
+  }
+
+  .nav-links a:hover {
+    color: var(--ac);
+  }
+
+  .nav-dot {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--M);
+    font-size: 9px;
+    letter-spacing: .14em;
+    color: var(--ac);
+    text-transform: uppercase;
+  }
+
+  .ndot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ac);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  #hero {
+    min-height: 680px;
+    padding: 0 40px 70px;
+    border-bottom: 1px solid rgba(221,216,204,.06);
+  }
+
+  .hero-title {
+    font-family: var(--D);
+    font-size: clamp(82px, 15vw, 210px);
+    font-weight: 400;
+    line-height: .78;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+
+  .hero-title em {
+    color: var(--ac);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .hero-eyebrow,
+  .hero-desc,
+  .scroll-hint {
+    font-family: var(--M);
+    color: rgba(221,216,204,.48);
+  }
+
+  .layout-section {
+    position: relative;
+    padding: 0 0 96px;
+    border-bottom: 1px solid rgba(221,216,204,.06);
+    overflow: visible;
+  }
+
+  .ref-head {
+    display: flex;
+    align-items: flex-end;
+    padding: 72px 40px 0;
+    gap: 32px;
+  }
+
+  .ref-head-main {
+    flex-shrink: 0;
+  }
+
+  .ref-tag {
+    display: block;
+    color: var(--ac);
+    font-family: var(--M);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .ref-title {
+    font-family: var(--D);
+    font-size: clamp(76px, 14vw, 210px);
+    font-weight: 400;
+    line-height: .78;
+    color: var(--txt);
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+
+  .ref-title .ac {
+    color: var(--ac);
+  }
+
+  .ref-line {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 28px;
+  }
+
+  .ref-line::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(51,170,255,.28), rgba(51,170,255,.03));
+  }
+
+  .ref-line::after {
+    content: '';
+    width: 44px;
+    height: 1px;
+    background: rgba(51,170,255,.12);
+    box-shadow: -12px 0 0 -4px rgba(255,78,58,.65);
+  }
+
+  .ref-meta {
+    font-family: var(--M);
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: .12em;
+    text-align: right;
+    color: var(--t3);
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    flex-shrink: 0;
+  }
+
+  .justified-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .j-row {
+    display: flex;
+    gap: 10px;
+    height: clamp(220px, 28vw, 390px);
+  }
+
+  .j-row.large {
+    height: clamp(260px, 34vw, 470px);
+  }
+
+  .j-item {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: #111;
+    cursor: none;
+  }
+
+  .j-item img,
+  .sd-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: brightness(.82) saturate(.86);
+    transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .35s;
+  }
+
+  .j-item:hover img,
+  .sd-item:hover img {
+    transform: scale(1.055);
+    filter: brightness(1) saturate(1);
+  }
+
+  .j-ov,
+  .sd-ov {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 22px;
+    background: linear-gradient(to top, rgba(8,8,8,.94), rgba(8,8,8,.02) 48%);
+    opacity: 0;
+    transition: opacity .28s;
+  }
+
+  .j-item:hover .j-ov,
+  .sd-item:hover .sd-ov {
+    opacity: 1;
+  }
+
+  .ov-t {
+    display: block;
+    overflow: hidden;
+    font-family: var(--D);
+    font-size: clamp(30px, 4vw, 64px);
+    line-height: .9;
+    letter-spacing: .05em;
+    color: var(--txt);
+  }
+
+  .ov-t-inner {
+    display: block;
+    transform: translateY(100%);
+    transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+  }
+
+  .j-item:hover .ov-t-inner,
+  .sd-item:hover .ov-t-inner {
+    transform: translateY(0);
+  }
+
+  .ov-m {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--M);
+    font-size: 9px;
+    letter-spacing: .14em;
+    color: var(--ac);
+    text-transform: uppercase;
+  }
+
+  .sd-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 34px;
+  }
+
+  .sd-item {
+    position: relative;
+    min-height: clamp(220px, 24vw, 360px);
+    overflow: hidden;
+    background: #111;
+  }
+
+  .sd-item.hero {
+    grid-column: span 2;
+    grid-row: span 2;
+    min-height: clamp(440px, 48vw, 720px);
+  }
+
+  .sd-item.wide {
+    grid-column: span 2;
+  }
+
+  .sd-item.long {
+    grid-column: span 3;
+  }
+
+  #about.layout-section {
+    padding-bottom: 110px;
+  }
+
+  .about-ref {
+    display: grid;
+    grid-template-columns: minmax(280px, 34vw) 1fr;
+    gap: 70px;
+    padding: 80px 40px 0;
+    align-items: center;
+  }
+
+  .about-big {
+    font-family: var(--D);
+    font-size: clamp(82px, 11vw, 170px);
+    line-height: .82;
+    color: var(--txt);
+  }
+
+  .about-big .ac {
+    color: var(--ac);
+  }
+
+  .about-big em {
+    display: block;
+    color: var(--t3);
+    font-style: normal;
+  }
+
+  .about-copy {
+    border-left: 1px solid var(--bd);
+    padding-left: 70px;
+    color: var(--t2);
+    font-size: 13px;
+    line-height: 1.95;
+    max-width: 980px;
+  }
+
+  .about-copy strong {
+    color: rgba(221,216,204,.76);
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .ref-head {
+      padding: 60px 24px 0;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ref-line,
+    .ref-meta { width: 100%; padding-bottom: 0; }
+    .j-row,
+    .j-row.large {
+      height: auto;
+      flex-direction: column;
+    }
+    .j-item {
+      min-height: 250px;
+      flex: none !important;
+    }
+    .sd-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sd-item,
+    .sd-item.hero,
+    .sd-item.wide,
+    .sd-item.long {
+      grid-column: span 1;
+      grid-row: span 1;
+      min-height: 230px;
+    }
+    .about-ref {
+      grid-template-columns: 1fr;
+      padding: 64px 24px 0;
+      gap: 36px;
+    }
+    .about-copy {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -655,13 +1039,16 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Your Name</a>
-  <ul class="nav-links">
-    <li><a href="#works">Works</a></li>
-    <li><a href="#interior">Interior</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <a href="#" class="nav-logo nav-l">YUNA / 3D-BG</a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#works">3D Works</a></li>
+      <li><a href="#interior">Space Design</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-dot"><span class="ndot"></span>Available</span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -669,7 +1056,7 @@
   <div class="hero-bg"></div>
   <div class="hero-orb"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">3D Background Artist · Available for work</p>
+    <p class="hero-eyebrow">3D Background Artist 쨌 Available for work</p>
     <h1 class="hero-title">
       YOUR<br>
       <em>NAME</em>
@@ -685,161 +1072,91 @@
 </section>
 
 <!-- WORKS -->
-<section id="works">
-  <div class="works-heading">
-    <span class="works-kicker">Background in Space Design</span>
-    <h2 class="works-title">WOR<span>KS</span></h2>
+<section id="works" class="layout-section">
+  <div class="ref-head">
+    <div class="ref-head-main">
+      <span class="ref-tag">Background in Space Design</span>
+      <h2 class="ref-title">WOR<span class="ac">KS</span></h2>
+    </div>
+    <div class="ref-line"></div>
+    <div class="ref-meta">7 Projects<br>Click - Detail</div>
   </div>
 
-  <div class="works-grid">
-
-    <div class="work-item full">
-      <img src="assets/hero-balista.png" alt="Balista 3D environment render">
-      <div class="work-item-info">
-        <p class="work-item-title">Balista Environment</p>
-        <p class="work-item-meta">3D Environment · 2024</p>
-      </div>
+  <div class="justified-grid">
+    <div class="j-row large">
+      <div class="j-item" style="flex:6"><img src="assets/hero-balista.png" alt="Balista environment render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">BALISTA ENVIRONMENT</span></span><span class="ov-m">Environment - UE5</span></div></div></div>
+      <div class="j-item" style="flex:4"><img src="assets/hero-balista.png" alt="Medieval prop render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">MEDIEVAL SIEGE PROP</span></span><span class="ov-m">Props - Modeling</span></div></div></div>
     </div>
-
-    <div class="work-item wide">
-      <img src="assets/hero-balista.png" alt="Balista prop detail">
-      <div class="work-item-info">
-        <p class="work-item-title">Wooden Siege Prop</p>
-        <p class="work-item-meta">Prop Modeling · 2024</p>
-      </div>
+    <div class="j-row">
+      <div class="j-item" style="flex:3.5"><img src="assets/hero-balista.png" alt="Wood material detail"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">WOODEN FRAME</span></span><span class="ov-m">Texture - Substance</span></div></div></div>
+      <div class="j-item" style="flex:2"><img src="assets/hero-balista.png" alt="Balista mechanism"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">MECHANISM</span></span><span class="ov-m">Hard Surface</span></div></div></div>
+      <div class="j-item" style="flex:4.5"><img src="assets/hero-balista.png" alt="Forest scene"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">FOREST SCENE</span></span><span class="ov-m">Scene Layout</span></div></div></div>
     </div>
-
-    <div class="work-item medium">
-      <img src="assets/hero-balista.png" alt="Forest background render">
-      <div class="work-item-info">
-        <p class="work-item-title">Forest Background</p>
-        <p class="work-item-meta">Background Art · 2024</p>
-      </div>
+    <div class="j-row">
+      <div class="j-item" style="flex:4.5"><img src="assets/hero-balista.png" alt="Wide battlefield render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">BATTLEFIELD MOOD</span></span><span class="ov-m">Lighting - Atmosphere</span></div></div></div>
+      <div class="j-item" style="flex:2.5"><img src="assets/hero-balista.png" alt="Asset study"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">ASSET STUDY</span></span><span class="ov-m">Prop Detail</span></div></div></div>
+      <div class="j-item" style="flex:3"><img src="assets/hero-balista.png" alt="Gate concept"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">GATE CONCEPT</span></span><span class="ov-m">Environment</span></div></div></div>
     </div>
-
-    <div class="work-item small">
-      <img src="assets/hero-balista.png" alt="Balista side render">
-      <div class="work-item-info">
-        <p class="work-item-title">Siege Camp Detail</p>
-        <p class="work-item-meta">Environment Design · 2024</p>
-      </div>
-    </div>
-
-    <div class="work-item medium">
-      <img src="assets/hero-balista.png" alt="Weapon render close-up">
-      <div class="work-item-info">
-        <p class="work-item-title">Weapon Close-up</p>
-        <p class="work-item-meta">3D Art · 2024</p>
-      </div>
-    </div>
-
-    <div class="work-item portrait">
-      <img src="assets/hero-balista.png" alt="Vertical crop of balista render">
-      <div class="work-item-info">
-        <p class="work-item-title">Material Study</p>
-        <p class="work-item-meta">Texture · 2024</p>
-      </div>
-    </div>
-
-    <div class="work-item wide">
-      <img src="assets/hero-balista.png" alt="Wide crop of forest scene">
-      <div class="work-item-info">
-        <p class="work-item-title">Forest Scene</p>
-        <p class="work-item-meta">Scene Layout · 2024</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- INTERIOR -->
-<section id="interior">
-  <div class="section-header">
-    <span class="section-title">Interior</span>
-    <span class="section-count">02 — 04</span>
+<section id="interior" class="layout-section">
+  <div class="ref-head">
+    <div class="ref-head-main">
+      <span class="ref-tag">Background in Space Design</span>
+      <h2 class="ref-title">INTE<span class="ac">RIOR</span></h2>
+    </div>
+    <div class="ref-line"></div>
   </div>
-  <div class="interior-grid">
-    <div class="interior-item">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        </div>
-        <span>Interior 01</span>
-      </div>
+
+  <div class="sd-grid">
+    <div class="sd-item hero"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">PROJECT SPACE 01</span></span><span class="ov-m">Interior Design</span></div></div></div>
+    <div class="sd-item wide"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">PRIVATE OFFICE</span></span><span class="ov-m">Interior Design</span></div></div></div>
+    <div class="sd-item wide"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">CAFE LAYOUT</span></span><span class="ov-m">Space Design</span></div></div></div>
+    <div class="sd-item"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">RETAIL VIEW</span></span><span class="ov-m">Interior</span></div></div></div>
+    <div class="sd-item"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">WORK ROOM</span></span><span class="ov-m">Space Design</span></div></div></div>
+    <div class="sd-item long"><img src="assets/hero-balista.png" alt="Interior project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">FACADE STUDY</span></span><span class="ov-m">Exterior View</span></div></div></div>
+  </div>
+</section>
+
+<!-- STAGE -->
+<section id="stage" class="layout-section">
+  <div class="ref-head">
+    <div class="ref-head-main">
+      <span class="ref-tag">Background in Space Design</span>
+      <h2 class="ref-title">STA<span class="ac">GE</span></h2>
     </div>
-    <div class="interior-item">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        </div>
-        <span>Interior 02</span>
-      </div>
-    </div>
-    <div class="interior-item">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
-        </div>
-        <span>Interior 03</span>
-      </div>
+    <div class="ref-line"></div>
+  </div>
+
+  <div class="justified-grid">
+    <div class="j-row large">
+      <div class="j-item" style="flex:5.4"><img src="assets/hero-balista.png" alt="Stage design preview"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">STAGE SCENE</span></span><span class="ov-m">Stage Design</span></div></div></div>
+      <div class="j-item" style="flex:2.8"><img src="assets/hero-balista.png" alt="Stage detail preview"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">LIGHT STUDY</span></span><span class="ov-m">Stage Lighting</span></div></div></div>
+      <div class="j-item" style="flex:2.8"><img src="assets/hero-balista.png" alt="Stage object preview"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">OBJECT MOOD</span></span><span class="ov-m">Stage Prop</span></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="section-header">
-    <span class="section-title">About</span>
-    <span class="section-count">03</span>
-  </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <h2>A 3D artist focused on<br><em>worlds & atmosphere</em></h2>
-      <p>
-        I'm a 3D background artist specializing in the creation of
-        immersive environments for games and animation. With a passion
-        for mood, light, and storytelling through space.
-      </p>
-      <p>
-        Every scene is an opportunity to build a world that feels lived-in,
-        textured, and alive — from distant mountain ranges to the smallest
-        corner of a room.
-      </p>
-      <div class="skills-list">
-        <span class="skill-tag">Blender</span>
-        <span class="skill-tag">Unreal Engine</span>
-        <span class="skill-tag">Houdini</span>
-        <span class="skill-tag">Substance</span>
-        <span class="skill-tag">ZBrush</span>
-        <span class="skill-tag">Maya</span>
-        <span class="skill-tag">After Effects</span>
-      </div>
+<section id="about" class="layout-section">
+  <div class="ref-head">
+    <div class="ref-head-main">
+      <span class="ref-tag">About</span>
+      <h2 class="ref-title">ENV<span class="ac">ART</span></h2>
     </div>
-    <div class="about-details">
-      <div class="detail-row">
-        <span class="detail-label">Based in</span>
-        <span class="detail-value">Seoul, South Korea</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">Experience</span>
-        <span class="detail-value">5+ Years</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">Specialization</span>
-        <span class="detail-value">3D Background / Environment</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">Available</span>
-        <span class="detail-value">Freelance & Full-time</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">Languages</span>
-        <span class="detail-value">Korean, English</span>
-      </div>
+    <div class="ref-line"></div>
+  </div>
+  <div class="about-ref">
+    <div class="about-big">ENV<br><span class="ac">ART</span><br><em>IST</em></div>
+    <div class="about-copy">
+      <p><strong>3D background artist</strong> focused on environment, atmosphere, and prop detail. I build scenes from modeling and material work to lighting and final composition.</p>
+      <p>My portfolio centers on <strong>space, mood, scale, and storytelling</strong>, with attention to wood, metal, fabric, stone, foliage, and aged surface details.</p>
+      <p>Tools: 3ds Max, Blender, Unreal Engine, Substance Painter, ZBrush, Marmoset, Photoshop.</p>
     </div>
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
@@ -857,28 +1174,28 @@
           <p class="contact-link-label">Email</p>
           <p>your@email.com</p>
         </div>
-        <span class="contact-link-arrow">↗</span>
+        <span class="contact-link-arrow">-&gt;</span>
       </a>
       <a href="https://www.artstation.com/" target="_blank" class="contact-link">
         <div>
           <p class="contact-link-label">ArtStation</p>
           <p>artstation.com/yourname</p>
         </div>
-        <span class="contact-link-arrow">↗</span>
+        <span class="contact-link-arrow">-&gt;</span>
       </a>
       <a href="https://www.instagram.com/" target="_blank" class="contact-link">
         <div>
           <p class="contact-link-label">Instagram</p>
           <p>@yourhandle</p>
         </div>
-        <span class="contact-link-arrow">↗</span>
+        <span class="contact-link-arrow">-&gt;</span>
       </a>
       <a href="https://linkedin.com/" target="_blank" class="contact-link">
         <div>
           <p class="contact-link-label">LinkedIn</p>
           <p>linkedin.com/in/yourname</p>
         </div>
-        <span class="contact-link-arrow">↗</span>
+        <span class="contact-link-arrow">-&gt;</span>
       </a>
     </div>
   </div>
@@ -886,7 +1203,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2024 Your Name. All rights reserved.</span>
+  <span>짤 2024 Your Name. All rights reserved.</span>
   <span>3D Background Artist</span>
 </footer>
 
@@ -943,3 +1260,4 @@
 </script>
 </body>
 </html>
+
