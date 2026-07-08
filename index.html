@@ -91,13 +91,16 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 60% 40%, #1a1a1a 0%, var(--black) 70%);
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.42) 56%, rgba(10,10,10,0.82) 100%),
+      url("assets/hero-balista.png") center / cover no-repeat;
     z-index: 0;
   }
 
   /* 3D floating orb decoration */
   .hero-orb {
     position: absolute;
+    display: none;
     top: 50%;
     left: 55%;
     transform: translate(-50%, -50%);
