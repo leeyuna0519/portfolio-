@@ -227,15 +227,16 @@
 
   .works-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(220px, 28vw);
+    gap: 12px;
   }
 
   .work-item {
     position: relative;
-    aspect-ratio: 4/3;
     overflow: hidden;
     cursor: none;
+    background: #111;
   }
 
   .work-item img {
@@ -254,10 +255,10 @@
   .work-item-info {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 32px 28px 24px;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-    transform: translateY(8px);
-    opacity: 0;
+    padding: 28px 24px 22px;
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.28) 58%, transparent 100%);
+    transform: translateY(0);
+    opacity: 1;
     transition: opacity 0.35s, transform 0.35s;
   }
 
@@ -324,7 +325,15 @@
   /* full-width item */
   .work-item.full {
     grid-column: span 2;
-    aspect-ratio: 21/9;
+    grid-row: span 2;
+  }
+
+  .work-item.tall {
+    grid-row: span 2;
+  }
+
+  .work-item.wide {
+    grid-column: span 2;
   }
 
   /* ── ABOUT ── */
@@ -541,8 +550,17 @@
     nav { padding: 20px 24px; }
     .nav-links { gap: 20px; }
     section, #hero { padding-left: 24px; padding-right: 24px; }
-    .works-grid { grid-template-columns: 1fr; }
-    .work-item.full { grid-column: span 1; aspect-ratio: 4/3; }
+    .works-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(260px, 70vw);
+      gap: 10px;
+    }
+    .work-item.full,
+    .work-item.tall,
+    .work-item.wide {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
     .hero-orb { width: 240px; height: 240px; left: 60%; }
     #about .about-grid { grid-template-columns: 1fr; gap: 48px; }
     #interior .interior-grid { grid-template-columns: 1fr 1fr; }
@@ -600,46 +618,30 @@
 
   <div class="works-grid">
 
-    <!-- 이미지를 나중에 교체하세요: src="your-image.jpg" -->
-    <div class="work-item">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-        </div>
-        <span>Replace Image</span>
-      </div>
+    <div class="work-item full">
+      <img src="assets/hero-balista.png" alt="Balista 3D environment render">
       <div class="work-item-info">
-        <p class="work-item-title">Project Title 01</p>
+        <p class="work-item-title">Balista Environment</p>
         <p class="work-item-meta">3D Environment · 2024</p>
       </div>
     </div>
 
-    <div class="work-item">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-        </div>
-        <span>Replace Image</span>
-      </div>
+    <div class="work-item tall">
+      <img src="assets/hero-balista.png" alt="Balista prop detail">
       <div class="work-item-info">
-        <p class="work-item-title">Project Title 02</p>
+        <p class="work-item-title">Wooden Siege Prop</p>
+        <p class="work-item-meta">Prop Modeling · 2024</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="assets/hero-balista.png" alt="Forest background render">
+      <div class="work-item-info">
+        <p class="work-item-title">Forest Background</p>
         <p class="work-item-meta">Background Art · 2024</p>
       </div>
     </div>
 
-    <div class="work-item full">
-      <div class="work-placeholder">
-        <div class="work-placeholder-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-        </div>
-        <span>Replace with Featured Image (Wide)</span>
-      </div>
-      <div class="work-item-info">
-        <p class="work-item-title">Featured Project</p>
-        <p class="work-item-meta">3D Scene · 2024</p>
-      </div>
-    </div>
-
     <div class="work-item">
       <div class="work-placeholder">
         <div class="work-placeholder-icon">
@@ -648,21 +650,21 @@
         <span>Replace Image</span>
       </div>
       <div class="work-item-info">
-        <p class="work-item-title">Project Title 04</p>
-        <p class="work-item-meta">Environment Design · 2023</p>
+        <p class="work-item-title">Next Project</p>
+        <p class="work-item-meta">Environment Design · 2024</p>
       </div>
     </div>
 
-    <div class="work-item">
+    <div class="work-item wide">
       <div class="work-placeholder">
         <div class="work-placeholder-icon">
           <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
         </div>
-        <span>Replace Image</span>
+        <span>Replace with Wide Work</span>
       </div>
       <div class="work-item-info">
-        <p class="work-item-title">Project Title 05</p>
-        <p class="work-item-meta">3D Art · 2023</p>
+        <p class="work-item-title">Upcoming Scene</p>
+        <p class="work-item-meta">3D Art · 2024</p>
       </div>
     </div>
 
