@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LEE YUNA ??3D Artist</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@500;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -345,7 +345,7 @@
 
   .works-kicker {
     display: block;
-    color: #078ce8;
+    color: #f4f000;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -363,7 +363,7 @@
   }
 
   .works-title span {
-    color: #1495ee;
+    color: #f4f000;
   }
 
   .work-item.full {
@@ -645,36 +645,51 @@
 
   /* Reference layout pass */
   :root {
-    --txt: #ddd8cc;
-    --t2: rgba(221,216,204,.42);
-    --t3: rgba(221,216,204,.14);
-    --ac: #33aaff;
-    --bd: rgba(221,216,204,.07);
+    --txt: #f4f2ea;
+    --t2: rgba(244,242,234,.58);
+    --t3: rgba(244,242,234,.18);
+    --ac: #f4f000;
+    --ac-soft: rgba(244,240,0,.18);
+    --bd: rgba(244,240,0,.16);
     --M: 'IBM Plex Mono', monospace;
-    --D: 'Bebas Neue', Impact, sans-serif;
-    --B: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+    --D: 'Archivo Black', 'Anton', Impact, sans-serif;
+    --B: 'Inter', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
   }
 
   body {
-    background: #080808;
+    background: #050505;
     color: var(--txt);
     font-family: var(--B);
     letter-spacing: 0;
   }
 
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(244,240,0,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,240,0,.018) 1px, transparent 1px),
+      radial-gradient(circle at 70% 30%, rgba(244,240,0,.08), transparent 28%);
+    background-size: 64px 64px, 64px 64px, 100% 100%;
+    opacity: .58;
+  }
+
   nav {
     height: 44px;
     padding: 0 40px;
-    border-bottom: 1px solid rgba(51,170,255,.28);
-    background: rgba(8,8,8,.82);
+    border-bottom: 1px solid rgba(244,240,0,.24);
+    background: rgba(5,5,5,.86);
     backdrop-filter: blur(10px);
   }
 
   .nav-l {
     font-family: var(--D);
     font-size: 14px;
-    letter-spacing: .18em;
-    color: rgba(221,216,204,.7);
+    letter-spacing: .08em;
+    color: rgba(244,242,234,.84);
   }
 
   .nav-r {
@@ -691,7 +706,7 @@
     font-family: var(--M);
     font-size: 10px;
     letter-spacing: .18em;
-    color: rgba(221,216,204,.48);
+    color: rgba(244,242,234,.58);
   }
 
   .nav-links a:hover {
@@ -720,15 +735,15 @@
   #hero {
     min-height: 680px;
     padding: 0 40px 70px;
-    border-bottom: 1px solid rgba(221,216,204,.06);
+    border-bottom: 1px solid rgba(244,240,0,.12);
   }
 
   .hero-title {
     font-family: var(--D);
     font-size: clamp(82px, 15vw, 210px);
-    font-weight: 400;
-    line-height: .78;
-    letter-spacing: -.01em;
+    font-weight: 900;
+    line-height: .82;
+    letter-spacing: -.055em;
     text-transform: uppercase;
   }
 
@@ -736,19 +751,20 @@
     color: var(--ac);
     font-style: normal;
     font-weight: 400;
+    text-shadow: 0 0 18px rgba(244,240,0,.18);
   }
 
   .hero-eyebrow,
   .hero-desc,
   .scroll-hint {
     font-family: var(--M);
-    color: rgba(221,216,204,.48);
+    color: rgba(244,242,234,.64);
   }
 
   .layout-section {
     position: relative;
     padding: 0 0 96px;
-    border-bottom: 1px solid rgba(221,216,204,.06);
+    border-bottom: 1px solid rgba(244,240,0,.10);
     overflow: visible;
   }
 
@@ -777,15 +793,16 @@
   .ref-title {
     font-family: var(--D);
     font-size: clamp(76px, 14vw, 210px);
-    font-weight: 400;
-    line-height: .78;
+    font-weight: 900;
+    line-height: .82;
     color: var(--txt);
-    letter-spacing: -.01em;
+    letter-spacing: -.06em;
     text-transform: uppercase;
   }
 
   .ref-title .ac {
     color: var(--ac);
+    text-shadow: 0 0 16px rgba(244,240,0,.18);
   }
 
   .ref-line {
@@ -800,15 +817,15 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, rgba(51,170,255,.28), rgba(51,170,255,.03));
+    background: linear-gradient(90deg, rgba(244,240,0,.42), rgba(244,240,0,.04));
   }
 
   .ref-line::after {
     content: '';
     width: 44px;
     height: 1px;
-    background: rgba(51,170,255,.12);
-    box-shadow: -12px 0 0 -4px rgba(255,78,58,.65);
+    background: rgba(244,240,0,.18);
+    box-shadow: -12px 0 0 -4px rgba(244,240,0,.82);
   }
 
   .ref-meta {
@@ -817,7 +834,7 @@
     line-height: 2;
     letter-spacing: .12em;
     text-align: right;
-    color: var(--t3);
+    color: rgba(244,242,234,.28);
     text-transform: uppercase;
     padding-bottom: 30px;
     flex-shrink: 0;
@@ -844,7 +861,7 @@
     position: relative;
     flex: 1;
     overflow: hidden;
-    background: #111;
+    background: #090909;
     cursor: none;
   }
 
@@ -854,14 +871,14 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    filter: brightness(.82) saturate(.86);
+    filter: brightness(.72) saturate(.7) contrast(1.08);
     transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .35s;
   }
 
   .j-item:hover img,
   .sd-item:hover img {
     transform: scale(1.055);
-    filter: brightness(1) saturate(1);
+    filter: brightness(1) saturate(1.02) contrast(1.05);
   }
 
   .j-ov,
@@ -872,7 +889,7 @@
     display: flex;
     align-items: flex-end;
     padding: 22px;
-    background: linear-gradient(to top, rgba(8,8,8,.94), rgba(8,8,8,.02) 48%);
+    background: linear-gradient(to top, rgba(5,5,5,.94), rgba(5,5,5,.02) 48%);
     opacity: 0;
     transition: opacity .28s;
   }
@@ -888,7 +905,7 @@
     font-family: var(--D);
     font-size: clamp(30px, 4vw, 64px);
     line-height: .9;
-    letter-spacing: .05em;
+    letter-spacing: -.035em;
     color: var(--txt);
   }
 
@@ -911,6 +928,7 @@
     letter-spacing: .14em;
     color: var(--ac);
     text-transform: uppercase;
+    font-weight: 700;
   }
 
   .sd-grid {
@@ -958,10 +976,12 @@
     font-size: clamp(82px, 11vw, 170px);
     line-height: .82;
     color: var(--txt);
+    letter-spacing: -.055em;
   }
 
   .about-big .ac {
     color: var(--ac);
+    text-shadow: 0 0 16px rgba(244,240,0,.18);
   }
 
   .about-big em {
@@ -980,7 +1000,7 @@
   }
 
   .about-copy strong {
-    color: rgba(221,216,204,.76);
+    color: rgba(244,242,234,.82);
     font-weight: 400;
   }
 
