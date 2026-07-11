@@ -860,11 +860,11 @@
 
   #works .j-row {
     gap: 4px;
-    height: clamp(160px, 15vw, 285px);
+    height: clamp(170px, 16vw, 310px) !important;
   }
 
   #works .j-row.large {
-    height: clamp(180px, 17vw, 325px);
+    height: clamp(190px, 18vw, 350px) !important;
   }
 
   #works .j-row.large > .j-item:first-child {
@@ -911,18 +911,18 @@
   #works .j-item.portrait-card img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center;
-    transform: scale(1.43);
+    object-fit: cover;
+    object-position: center 62%;
+    transform: none;
   }
 
   #works .j-item.portrait-card:hover img {
-    transform: scale(1.47);
+    transform: scale(1.035);
   }
 
   #works .single-row {
     align-items: stretch;
-    height: clamp(160px, 15vw, 285px);
+    height: clamp(170px, 16vw, 310px) !important;
   }
 
   #works .single-row .j-item {
@@ -1308,7 +1308,7 @@
     #works .j-row,
     #works .j-row.large,
     #works .single-row {
-      height: auto;
+      height: auto !important;
     }
     #works .justified-grid > .j-row > .j-item {
       flex: none !important;
