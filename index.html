@@ -852,6 +852,39 @@
     margin-top: 34px;
   }
 
+  /* Reference-style edge-to-edge mosaic for Works */
+  #works .justified-grid {
+    gap: 4px;
+    margin-top: 26px;
+  }
+
+  #works .j-row {
+    gap: 4px;
+    height: clamp(190px, 21vw, 400px);
+  }
+
+  #works .j-row.large {
+    height: clamp(220px, 24vw, 460px);
+  }
+
+  #works .j-item img {
+    filter: brightness(.88) saturate(.84) contrast(1.05);
+  }
+
+  #works .portrait-row {
+    align-items: stretch;
+    height: clamp(280px, 34vw, 650px);
+  }
+
+  #works .portrait-row .j-item {
+    flex: 0 0 clamp(230px, 18vw, 350px) !important;
+    margin-left: clamp(24px, 4.5vw, 86px);
+  }
+
+  #works .portrait-row .j-item img {
+    object-position: center;
+  }
+
   .j-row {
     display: flex;
     gap: 10px;
@@ -1132,6 +1165,16 @@
       min-height: 250px;
       flex: none !important;
     }
+    #works .j-row,
+    #works .j-row.large,
+    #works .portrait-row {
+      height: auto;
+    }
+    #works .portrait-row .j-item {
+      width: 100%;
+      margin-left: 0;
+      min-height: 320px;
+    }
     .gallery-head { padding: 14px 16px; }
     .gallery-stage { padding: 18px 54px; }
     .gallery-arrow { width: 40px; height: 58px; }
@@ -1231,7 +1274,7 @@
       <div class="j-item" style="flex:2.5" data-project="2024-12-20" role="button" tabindex="0"><img src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
       <div class="j-item" style="flex:3" data-project="2024-11-21" role="button" tabindex="0"><img src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
-    <div class="j-row large">
+    <div class="j-row portrait-row">
       <div class="j-item" data-project="2024-05-29" role="button" tabindex="0"><img src="assets/work/2024-05-29/01.jpg" alt="2024-05-29 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-05-29</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
   </div>
