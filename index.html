@@ -1058,6 +1058,13 @@
     transition: opacity .16s ease;
   }
 
+  .gallery-image.portrait {
+    width: auto;
+    height: 78%;
+    max-width: 68%;
+    max-height: 78%;
+  }
+
   .gallery-image.changing { opacity: .18; }
 
   .gallery-arrow {
@@ -1245,6 +1252,11 @@
       grid-template-rows: minmax(0, 1fr) 116px;
     }
     .gallery-stage { height: auto; padding: 18px 44px 32px; }
+    .gallery-image.portrait {
+      height: 74%;
+      max-width: 82%;
+      max-height: 74%;
+    }
     .gallery-arrow { width: 40px; height: 58px; }
     .gallery-prev { left: 7px; }
     .gallery-next { right: 7px; }
@@ -1582,6 +1594,7 @@
     const nextSrc = `assets/work/${activeProject}/${filename}`;
     const preload = new Image();
     preload.onload = () => {
+      galleryImage.classList.toggle('portrait', preload.naturalHeight > preload.naturalWidth);
       galleryImage.src = nextSrc;
       requestAnimationFrame(() => galleryImage.classList.remove('changing'));
     };
