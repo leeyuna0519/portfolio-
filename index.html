@@ -938,6 +938,105 @@
     font-weight: 700;
   }
 
+  body.gallery-open { overflow: hidden; }
+
+  .project-gallery {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    background: rgba(3,3,3,.97);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s, visibility .25s;
+  }
+
+  .project-gallery.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .gallery-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--bd);
+  }
+
+  .gallery-title {
+    font-family: var(--D);
+    font-size: clamp(24px, 3vw, 42px);
+    letter-spacing: -.02em;
+    color: var(--txt);
+  }
+
+  .gallery-close,
+  .gallery-arrow {
+    border: 1px solid rgba(244,242,234,.22);
+    background: rgba(8,8,8,.72);
+    color: var(--txt);
+    cursor: none;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+
+  .gallery-close:hover,
+  .gallery-arrow:hover {
+    border-color: var(--ac);
+    color: var(--ac);
+    background: #111;
+  }
+
+  .gallery-close {
+    width: 46px;
+    height: 46px;
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .gallery-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    padding: 28px 92px;
+  }
+
+  .gallery-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 70px;
+    font-size: 30px;
+  }
+
+  .gallery-prev { left: 24px; }
+  .gallery-next { right: 24px; }
+
+  .gallery-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px 20px;
+    border-top: 1px solid var(--bd);
+    font-family: var(--M);
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--t2);
+    text-transform: uppercase;
+  }
+
+  .gallery-file { color: var(--ac); }
+
   .sd-grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1033,6 +1132,12 @@
       min-height: 250px;
       flex: none !important;
     }
+    .gallery-head { padding: 14px 16px; }
+    .gallery-stage { padding: 18px 54px; }
+    .gallery-arrow { width: 40px; height: 58px; }
+    .gallery-prev { left: 7px; }
+    .gallery-next { right: 7px; }
+    .gallery-foot { padding: 14px 16px; }
     .sd-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1108,26 +1213,45 @@
       <h2 class="ref-title">WOR<span class="ac">KS</span></h2>
     </div>
     <div class="ref-line"></div>
-    <div class="ref-meta">7 Projects<br>Click - Detail</div>
+    <div class="ref-meta">9 Projects<br>Click - Detail</div>
   </div>
 
   <div class="justified-grid">
     <div class="j-row large">
-      <div class="j-item" style="flex:6"><img src="assets/hero-balista.png" alt="Balista environment render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">BALISTA ENVIRONMENT</span></span><span class="ov-m">Environment - UE5</span></div></div></div>
-      <div class="j-item" style="flex:4"><img src="assets/hero-balista.png" alt="Medieval prop render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">MEDIEVAL SIEGE PROP</span></span><span class="ov-m">Props - Modeling</span></div></div></div>
+      <div class="j-item" style="flex:6" data-project="2025-09-22" role="button" tabindex="0"><img src="assets/work/2025-09-22/1.jpg" alt="2025-09-22 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-09-22</span></span><span class="ov-m">View Project · 1 Image</span></div></div></div>
+      <div class="j-item" style="flex:4" data-project="2025-05-30" role="button" tabindex="0"><img src="assets/work/2025-05-30/1.jpg" alt="2025-05-30 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-05-30</span></span><span class="ov-m">View Project · 11 Images</span></div></div></div>
     </div>
     <div class="j-row">
-      <div class="j-item" style="flex:3.5"><img src="assets/hero-balista.png" alt="Wood material detail"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">WOODEN FRAME</span></span><span class="ov-m">Texture - Substance</span></div></div></div>
-      <div class="j-item" style="flex:2"><img src="assets/hero-balista.png" alt="Balista mechanism"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">MECHANISM</span></span><span class="ov-m">Hard Surface</span></div></div></div>
-      <div class="j-item" style="flex:4.5"><img src="assets/hero-balista.png" alt="Forest scene"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">FOREST SCENE</span></span><span class="ov-m">Scene Layout</span></div></div></div>
+      <div class="j-item" style="flex:3.5" data-project="2025-04-09" role="button" tabindex="0"><img src="assets/work/2025-04-09/1.jpg" alt="2025-04-09 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-09</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
+      <div class="j-item" style="flex:2" data-project="2025-04-08" role="button" tabindex="0"><img src="assets/work/2025-04-08/1.jpg" alt="2025-04-08 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-08</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+      <div class="j-item" style="flex:4.5" data-project="2025-03-21" role="button" tabindex="0"><img src="assets/work/2025-03-21/1.jpg" alt="2025-03-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-03-21</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
     </div>
     <div class="j-row">
-      <div class="j-item" style="flex:4.5"><img src="assets/hero-balista.png" alt="Wide battlefield render"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">BATTLEFIELD MOOD</span></span><span class="ov-m">Lighting - Atmosphere</span></div></div></div>
-      <div class="j-item" style="flex:2.5"><img src="assets/hero-balista.png" alt="Asset study"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">ASSET STUDY</span></span><span class="ov-m">Prop Detail</span></div></div></div>
-      <div class="j-item" style="flex:3"><img src="assets/hero-balista.png" alt="Gate concept"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">GATE CONCEPT</span></span><span class="ov-m">Environment</span></div></div></div>
+      <div class="j-item" style="flex:4.5" data-project="2025-02-18" role="button" tabindex="0"><img src="assets/work/2025-02-18/01.jpg" alt="2025-02-18 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-02-18</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
+      <div class="j-item" style="flex:2.5" data-project="2024-12-20" role="button" tabindex="0"><img src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+      <div class="j-item" style="flex:3" data-project="2024-11-21" role="button" tabindex="0"><img src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
+    </div>
+    <div class="j-row large">
+      <div class="j-item" data-project="2024-05-29" role="button" tabindex="0"><img src="assets/work/2024-05-29/01.jpg" alt="2024-05-29 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-05-29</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
   </div>
 </section>
+
+<div class="project-gallery" id="project-gallery" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="gallery-title">
+  <div class="gallery-head">
+    <h3 class="gallery-title" id="gallery-title"></h3>
+    <button class="gallery-close" type="button" aria-label="Close gallery">×</button>
+  </div>
+  <div class="gallery-stage">
+    <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">‹</button>
+    <img class="gallery-image" src="" alt="">
+    <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">›</button>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-file"></span>
+    <span class="gallery-count"></span>
+  </div>
+</div>
 
 <!-- INTERIOR -->
 <section id="interior" class="layout-section">
@@ -1251,7 +1375,7 @@
     cursor.style.top  = e.clientY + 'px';
   });
 
-  const hoverEls = document.querySelectorAll('a, .work-item, .skill-tag, button');
+  const hoverEls = document.querySelectorAll('a, .work-item, .j-item, .skill-tag, button');
   hoverEls.forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
@@ -1285,6 +1409,85 @@
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
     orb.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+  });
+
+  // Works project gallery
+  const projectImages = {
+    '2025-09-22': ['1.jpg'],
+    '2025-05-30': ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg'],
+    '2025-04-09': ['1.jpg','2.jpg','3.jpg'],
+    '2025-04-08': ['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg'],
+    '2025-03-21': ['1.jpg','2.jpg'],
+    '2025-02-18': ['01.jpg','02.jpg'],
+    '2024-12-20': ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg'],
+    '2024-11-21': ['01.jpg','02.jpg','03.jpg','04.jpg','06.jpg','07.jpg'],
+    '2024-05-29': ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg']
+  };
+
+  const gallery = document.getElementById('project-gallery');
+  const galleryImage = gallery.querySelector('.gallery-image');
+  const galleryTitle = gallery.querySelector('.gallery-title');
+  const galleryFile = gallery.querySelector('.gallery-file');
+  const galleryCount = gallery.querySelector('.gallery-count');
+  let activeProject = '';
+  let activeImage = 0;
+  let lastGalleryTrigger = null;
+
+  function renderGalleryImage() {
+    const files = projectImages[activeProject];
+    const filename = files[activeImage];
+    galleryImage.src = `assets/work/${activeProject}/${filename}`;
+    galleryImage.alt = `${activeProject} project image ${activeImage + 1}`;
+    galleryFile.textContent = filename;
+    galleryCount.textContent = `${String(activeImage + 1).padStart(2, '0')} / ${String(files.length).padStart(2, '0')}`;
+    gallery.querySelector('.gallery-prev').disabled = files.length < 2;
+    gallery.querySelector('.gallery-next').disabled = files.length < 2;
+  }
+
+  function openGallery(project, trigger) {
+    activeProject = project;
+    activeImage = 0;
+    lastGalleryTrigger = trigger;
+    galleryTitle.textContent = project;
+    renderGalleryImage();
+    gallery.classList.add('open');
+    gallery.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('gallery-open');
+    gallery.querySelector('.gallery-close').focus();
+  }
+
+  function closeGallery() {
+    gallery.classList.remove('open');
+    gallery.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('gallery-open');
+    if (lastGalleryTrigger) lastGalleryTrigger.focus();
+  }
+
+  function stepGallery(direction) {
+    const length = projectImages[activeProject].length;
+    activeImage = (activeImage + direction + length) % length;
+    renderGalleryImage();
+  }
+
+  document.querySelectorAll('#works .j-item[data-project]').forEach(item => {
+    item.addEventListener('click', () => openGallery(item.dataset.project, item));
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openGallery(item.dataset.project, item);
+      }
+    });
+  });
+
+  gallery.querySelector('.gallery-close').addEventListener('click', closeGallery);
+  gallery.querySelector('.gallery-prev').addEventListener('click', () => stepGallery(-1));
+  gallery.querySelector('.gallery-next').addEventListener('click', () => stepGallery(1));
+  gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
+  document.addEventListener('keydown', event => {
+    if (!gallery.classList.contains('open')) return;
+    if (event.key === 'Escape') closeGallery();
+    if (event.key === 'ArrowLeft') stepGallery(-1);
+    if (event.key === 'ArrowRight') stepGallery(1);
   });
 </script>
 </body>
