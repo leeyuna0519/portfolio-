@@ -978,8 +978,8 @@
     inset: 0;
     z-index: 10000;
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    background: rgba(3,3,3,.97);
+    grid-template-columns: minmax(0, 1fr) clamp(210px, 16vw, 300px);
+    background: #070707;
     opacity: 0;
     visibility: hidden;
     transition: opacity .25s, visibility .25s;
@@ -994,13 +994,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 28px;
+    padding: 18px 16px;
     border-bottom: 1px solid var(--bd);
   }
 
   .gallery-title {
     font-family: var(--D);
-    font-size: clamp(24px, 3vw, 42px);
+    font-size: clamp(20px, 2vw, 32px);
     letter-spacing: -.02em;
     color: var(--txt);
   }
@@ -1033,7 +1033,9 @@
     display: grid;
     place-items: center;
     min-height: 0;
-    padding: 28px 92px;
+    height: 100vh;
+    padding: clamp(24px, 4vh, 54px) clamp(54px, 5vw, 96px);
+    background: #070707;
   }
 
   .gallery-image {
@@ -1041,7 +1043,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    opacity: 1;
+    transition: opacity .16s ease;
   }
+
+  .gallery-image.changing { opacity: .18; }
 
   .gallery-arrow {
     position: absolute;
@@ -1056,11 +1062,14 @@
   .gallery-next { right: 24px; }
 
   .gallery-foot {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 28px 20px;
-    border-top: 1px solid var(--bd);
+    padding: 0;
     font-family: var(--M);
     font-size: 10px;
     letter-spacing: .14em;
@@ -1069,6 +1078,51 @@
   }
 
   .gallery-file { color: var(--ac); }
+
+  .gallery-sidebar {
+    min-width: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    border-left: 1px solid var(--bd);
+    background: #090909;
+  }
+
+  .gallery-thumbnails {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ac) #111;
+  }
+
+  .gallery-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    margin: 0 0 7px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background: #111;
+    cursor: none;
+    opacity: .5;
+    transition: opacity .2s, border-color .2s;
+  }
+
+  .gallery-thumb:hover { opacity: .82; }
+
+  .gallery-thumb.active {
+    opacity: 1;
+    border-color: var(--ac);
+  }
+
+  .gallery-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .sd-grid {
     display: grid;
@@ -1175,12 +1229,37 @@
       margin-left: 0;
       min-height: 320px;
     }
-    .gallery-head { padding: 14px 16px; }
-    .gallery-stage { padding: 18px 54px; }
+    .project-gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: minmax(0, 1fr) 116px;
+    }
+    .gallery-stage { height: auto; padding: 18px 44px 32px; }
     .gallery-arrow { width: 40px; height: 58px; }
     .gallery-prev { left: 7px; }
     .gallery-next { right: 7px; }
-    .gallery-foot { padding: 14px 16px; }
+    .gallery-foot { left: 12px; right: 12px; bottom: 8px; }
+    .gallery-sidebar {
+      height: 116px;
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: 1fr;
+      border-left: 0;
+      border-top: 1px solid var(--bd);
+    }
+    .gallery-head { min-width: 150px; padding: 12px; }
+    .gallery-title { font-size: 19px; }
+    .gallery-close { width: 38px; height: 38px; }
+    .gallery-thumbnails {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 7px;
+    }
+    .gallery-thumb {
+      flex: 0 0 138px;
+      height: 100%;
+      margin: 0;
+    }
     .sd-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1281,19 +1360,22 @@
 </section>
 
 <div class="project-gallery" id="project-gallery" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="gallery-title">
-  <div class="gallery-head">
-    <h3 class="gallery-title" id="gallery-title"></h3>
-    <button class="gallery-close" type="button" aria-label="Close gallery">×</button>
-  </div>
   <div class="gallery-stage">
     <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">‹</button>
     <img class="gallery-image" src="" alt="">
     <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">›</button>
+    <div class="gallery-foot">
+      <span class="gallery-file"></span>
+      <span class="gallery-count"></span>
+    </div>
   </div>
-  <div class="gallery-foot">
-    <span class="gallery-file"></span>
-    <span class="gallery-count"></span>
-  </div>
+  <aside class="gallery-sidebar">
+    <div class="gallery-head">
+      <h3 class="gallery-title" id="gallery-title"></h3>
+      <button class="gallery-close" type="button" aria-label="Close gallery">×</button>
+    </div>
+    <div class="gallery-thumbnails" aria-label="Project images"></div>
+  </aside>
 </div>
 
 <!-- INTERIOR -->
@@ -1472,19 +1554,51 @@
   const galleryTitle = gallery.querySelector('.gallery-title');
   const galleryFile = gallery.querySelector('.gallery-file');
   const galleryCount = gallery.querySelector('.gallery-count');
+  const galleryThumbnails = gallery.querySelector('.gallery-thumbnails');
   let activeProject = '';
   let activeImage = 0;
   let lastGalleryTrigger = null;
+  let galleryWheelLocked = false;
+  let galleryTouchY = 0;
 
   function renderGalleryImage() {
     const files = projectImages[activeProject];
     const filename = files[activeImage];
-    galleryImage.src = `assets/work/${activeProject}/${filename}`;
+    galleryImage.classList.add('changing');
+    const nextSrc = `assets/work/${activeProject}/${filename}`;
+    const preload = new Image();
+    preload.onload = () => {
+      galleryImage.src = nextSrc;
+      requestAnimationFrame(() => galleryImage.classList.remove('changing'));
+    };
+    preload.src = nextSrc;
     galleryImage.alt = `${activeProject} project image ${activeImage + 1}`;
     galleryFile.textContent = filename;
     galleryCount.textContent = `${String(activeImage + 1).padStart(2, '0')} / ${String(files.length).padStart(2, '0')}`;
     gallery.querySelector('.gallery-prev').disabled = files.length < 2;
     gallery.querySelector('.gallery-next').disabled = files.length < 2;
+    galleryThumbnails.querySelectorAll('.gallery-thumb').forEach((thumb, index) => {
+      const isActive = index === activeImage;
+      thumb.classList.toggle('active', isActive);
+      thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+      if (isActive) thumb.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    });
+  }
+
+  function buildGalleryThumbnails() {
+    galleryThumbnails.innerHTML = '';
+    projectImages[activeProject].forEach((filename, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gallery-thumb';
+      button.setAttribute('aria-label', `Show image ${index + 1}`);
+      button.innerHTML = `<img src="assets/work/${activeProject}/${filename}" alt="">`;
+      button.addEventListener('click', () => {
+        activeImage = index;
+        renderGalleryImage();
+      });
+      galleryThumbnails.appendChild(button);
+    });
   }
 
   function openGallery(project, trigger) {
@@ -1492,6 +1606,7 @@
     activeImage = 0;
     lastGalleryTrigger = trigger;
     galleryTitle.textContent = project;
+    buildGalleryThumbnails();
     renderGalleryImage();
     gallery.classList.add('open');
     gallery.setAttribute('aria-hidden', 'false');
@@ -1526,6 +1641,20 @@
   gallery.querySelector('.gallery-prev').addEventListener('click', () => stepGallery(-1));
   gallery.querySelector('.gallery-next').addEventListener('click', () => stepGallery(1));
   gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
+  gallery.addEventListener('wheel', event => {
+    event.preventDefault();
+    if (galleryWheelLocked || Math.abs(event.deltaY) < 8) return;
+    galleryWheelLocked = true;
+    stepGallery(event.deltaY > 0 ? 1 : -1);
+    setTimeout(() => { galleryWheelLocked = false; }, 520);
+  }, { passive: false });
+  gallery.addEventListener('touchstart', event => {
+    galleryTouchY = event.touches[0].clientY;
+  }, { passive: true });
+  gallery.addEventListener('touchend', event => {
+    const distance = galleryTouchY - event.changedTouches[0].clientY;
+    if (Math.abs(distance) > 45) stepGallery(distance > 0 ? 1 : -1);
+  }, { passive: true });
   document.addEventListener('keydown', event => {
     if (!gallery.classList.contains('open')) return;
     if (event.key === 'Escape') closeGallery();
