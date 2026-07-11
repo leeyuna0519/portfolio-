@@ -860,11 +860,43 @@
 
   #works .j-row {
     gap: 4px;
-    height: clamp(190px, 21vw, 400px);
+    height: clamp(160px, 15vw, 285px);
   }
 
   #works .j-row.large {
-    height: clamp(220px, 24vw, 460px);
+    height: clamp(180px, 17vw, 325px);
+  }
+
+  #works .j-row.large > .j-item:first-child {
+    flex: 0 0 calc(60% - 2px) !important;
+  }
+
+  #works .j-row.large > .j-item:nth-child(2) {
+    flex: 0 0 calc(40% - 2px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(2) > .j-item:nth-child(1) {
+    flex: 0 0 calc(35% - 3px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(2) > .j-item:nth-child(2) {
+    flex: 0 0 calc(20% - 2px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(2) > .j-item:nth-child(3) {
+    flex: 0 0 calc(45% - 3px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(3) > .j-item:nth-child(1) {
+    flex: 0 0 calc(45% - 3px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(3) > .j-item:nth-child(2) {
+    flex: 0 0 calc(25% - 2px) !important;
+  }
+
+  #works .justified-grid > .j-row:nth-child(3) > .j-item:nth-child(3) {
+    flex: 0 0 calc(30% - 3px) !important;
   }
 
   #works .j-item img {
@@ -872,6 +904,7 @@
   }
 
   #works .j-item.portrait-card {
+    height: 100%;
     background: #070707;
   }
 
@@ -889,17 +922,18 @@
 
   #works .single-row {
     align-items: stretch;
-    height: clamp(220px, 24vw, 460px);
+    height: clamp(160px, 15vw, 285px);
   }
 
   #works .single-row .j-item {
-    flex: 0 0 min(62vw, 1100px) !important;
-    margin-left: clamp(24px, 4.5vw, 86px);
+    flex: 0 0 45% !important;
+    width: 45%;
+    margin-left: 0;
   }
 
   #works .single-row .j-item img {
-    object-fit: contain;
-    object-position: left center;
+    object-fit: cover;
+    object-position: center;
   }
 
   .j-row {
@@ -1275,6 +1309,10 @@
     #works .j-row.large,
     #works .single-row {
       height: auto;
+    }
+    #works .justified-grid > .j-row > .j-item {
+      flex: none !important;
+      width: 100%;
     }
     #works .single-row .j-item {
       width: 100%;
