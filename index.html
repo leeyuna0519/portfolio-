@@ -985,9 +985,20 @@
     transition: opacity .25s, visibility .25s;
   }
 
+  .project-gallery .gallery-stage,
+  .project-gallery .gallery-sidebar {
+    transform: translateY(18px);
+    transition: transform .45s cubic-bezier(.22,.75,.25,1);
+  }
+
   .project-gallery.open {
     opacity: 1;
     visibility: visible;
+  }
+
+  .project-gallery.open .gallery-stage,
+  .project-gallery.open .gallery-sidebar {
+    transform: translateY(0);
   }
 
   .gallery-head {
@@ -1340,21 +1351,21 @@
 
   <div class="justified-grid">
     <div class="j-row large">
-      <div class="j-item" style="flex:6" data-project="2025-09-22" role="button" tabindex="0"><img src="assets/work/2025-09-22/1.jpg" alt="2025-09-22 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-09-22</span></span><span class="ov-m">View Project · 1 Image</span></div></div></div>
-      <div class="j-item" style="flex:4" data-project="2025-05-30" role="button" tabindex="0"><img src="assets/work/2025-05-30/1.jpg" alt="2025-05-30 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-05-30</span></span><span class="ov-m">View Project · 11 Images</span></div></div></div>
+      <div class="j-item" style="flex:6" data-project="2025-09-22" data-work="work-1" role="button" tabindex="0"><img src="assets/work/2025-09-22/1.jpg" alt="2025-09-22 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-09-22</span></span><span class="ov-m">View Project · 1 Image</span></div></div></div>
+      <div class="j-item" style="flex:4" data-project="2025-05-30" data-work="work-2" role="button" tabindex="0"><img src="assets/work/2025-05-30/1.jpg" alt="2025-05-30 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-05-30</span></span><span class="ov-m">View Project · 11 Images</span></div></div></div>
     </div>
     <div class="j-row">
-      <div class="j-item" style="flex:3.5" data-project="2025-04-09" role="button" tabindex="0"><img src="assets/work/2025-04-09/1.jpg" alt="2025-04-09 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-09</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
-      <div class="j-item" style="flex:2" data-project="2025-04-08" role="button" tabindex="0"><img src="assets/work/2025-04-08/1.jpg" alt="2025-04-08 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-08</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
-      <div class="j-item" style="flex:4.5" data-project="2025-03-21" role="button" tabindex="0"><img src="assets/work/2025-03-21/1.jpg" alt="2025-03-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-03-21</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
+      <div class="j-item" style="flex:3.5" data-project="2025-04-09" data-work="work-3" role="button" tabindex="0"><img src="assets/work/2025-04-09/1.jpg" alt="2025-04-09 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-09</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
+      <div class="j-item" style="flex:2" data-project="2025-04-08" data-work="work-4" role="button" tabindex="0"><img src="assets/work/2025-04-08/1.jpg" alt="2025-04-08 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-08</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+      <div class="j-item" style="flex:4.5" data-project="2025-03-21" data-work="work-5" role="button" tabindex="0"><img src="assets/work/2025-03-21/1.jpg" alt="2025-03-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-03-21</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
     </div>
     <div class="j-row">
-      <div class="j-item" style="flex:4.5" data-project="2025-02-18" role="button" tabindex="0"><img src="assets/work/2025-02-18/01.jpg" alt="2025-02-18 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-02-18</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
-      <div class="j-item" style="flex:2.5" data-project="2024-12-20" role="button" tabindex="0"><img src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
-      <div class="j-item" style="flex:3" data-project="2024-11-21" role="button" tabindex="0"><img src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
+      <div class="j-item" style="flex:4.5" data-project="2025-02-18" data-work="work-6" role="button" tabindex="0"><img src="assets/work/2025-02-18/01.jpg" alt="2025-02-18 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-02-18</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
+      <div class="j-item" style="flex:2.5" data-project="2024-12-20" data-work="work-7" role="button" tabindex="0"><img src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+      <div class="j-item" style="flex:3" data-project="2024-11-21" data-work="work-8" role="button" tabindex="0"><img src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
     <div class="j-row portrait-row">
-      <div class="j-item" data-project="2024-05-29" role="button" tabindex="0"><img src="assets/work/2024-05-29/01.jpg" alt="2024-05-29 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-05-29</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
+      <div class="j-item" data-project="2024-05-29" data-work="work-9" role="button" tabindex="0"><img src="assets/work/2024-05-29/01.jpg" alt="2024-05-29 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-05-29</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
   </div>
 </section>
@@ -1560,6 +1571,9 @@
   let lastGalleryTrigger = null;
   let galleryWheelLocked = false;
   let galleryTouchY = 0;
+  const workRoutes = Object.fromEntries(
+    Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
+  );
 
   function renderGalleryImage() {
     const files = projectImages[activeProject];
@@ -1601,7 +1615,7 @@
     });
   }
 
-  function openGallery(project, trigger) {
+  function openGallery(project, trigger, updateAddress = true) {
     activeProject = project;
     activeImage = 0;
     lastGalleryTrigger = trigger;
@@ -1612,13 +1626,31 @@
     gallery.setAttribute('aria-hidden', 'false');
     document.body.classList.add('gallery-open');
     gallery.querySelector('.gallery-close').focus();
+    if (updateAddress && trigger?.dataset.work) {
+      history.pushState({ work: trigger.dataset.work }, '', `#${trigger.dataset.work}`);
+    }
   }
 
-  function closeGallery() {
+  function closeGallery(updateAddress = true) {
     gallery.classList.remove('open');
     gallery.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('gallery-open');
     if (lastGalleryTrigger) lastGalleryTrigger.focus();
+    if (updateAddress && location.hash.startsWith('#work-')) {
+      history.replaceState(null, '', '#works');
+    }
+  }
+
+  function syncGalleryWithAddress() {
+    const route = location.hash.slice(1);
+    const item = workRoutes[route];
+    if (item) {
+      if (!gallery.classList.contains('open') || activeProject !== item.dataset.project) {
+        openGallery(item.dataset.project, item, false);
+      }
+    } else if (gallery.classList.contains('open')) {
+      closeGallery(false);
+    }
   }
 
   function stepGallery(direction) {
@@ -1628,11 +1660,11 @@
   }
 
   document.querySelectorAll('#works .j-item[data-project]').forEach(item => {
-    item.addEventListener('click', () => openGallery(item.dataset.project, item));
+    item.addEventListener('click', () => openGallery(item.dataset.project, item, true));
     item.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        openGallery(item.dataset.project, item);
+        openGallery(item.dataset.project, item, true);
       }
     });
   });
@@ -1661,6 +1693,9 @@
     if (event.key === 'ArrowLeft') stepGallery(-1);
     if (event.key === 'ArrowRight') stepGallery(1);
   });
+  window.addEventListener('popstate', syncGalleryWithAddress);
+  window.addEventListener('hashchange', syncGalleryWithAddress);
+  syncGalleryWithAddress();
 </script>
 </body>
 </html>
