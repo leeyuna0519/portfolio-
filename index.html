@@ -108,19 +108,17 @@
 
   .hero-bg-slide {
     position: absolute;
-    inset: -1.5%;
+    inset: 0;
     z-index: 1;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0;
-    transform: scale(1.015);
-    transition: opacity 1s ease, transform 2.8s ease;
+    transition: opacity 1s ease;
   }
 
   .hero-bg-slide.active {
     opacity: 1;
-    transform: scale(1.045);
   }
 
   /* 3D floating orb decoration */
