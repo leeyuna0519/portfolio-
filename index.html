@@ -92,10 +92,35 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.42) 56%, rgba(10,10,10,0.82) 100%),
-      url("assets/hero-balista.png") center / cover no-repeat;
     z-index: 0;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(10,10,10,0.18) 0%, rgba(10,10,10,0.42) 56%, rgba(10,10,10,0.82) 100%);
+  }
+
+  .hero-bg-slide {
+    position: absolute;
+    inset: -1.5%;
+    z-index: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.015);
+    transition: opacity 1s ease, transform 2.8s ease;
+  }
+
+  .hero-bg-slide.active {
+    opacity: 1;
+    transform: scale(1.045);
   }
 
   /* 3D floating orb decoration */
@@ -1487,7 +1512,14 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-slide active" style="background-image:url('assets/background/1.png')"></div>
+    <div class="hero-bg-slide" style="background-image:url('assets/background/2.jpg')"></div>
+    <div class="hero-bg-slide" style="background-image:url('assets/background/3.jpg')"></div>
+    <div class="hero-bg-slide" style="background-image:url('assets/background/4.jpg')"></div>
+    <div class="hero-bg-slide" style="background-image:url('assets/background/5.jpg')"></div>
+    <div class="hero-bg-slide" style="background-image:url('assets/background/6.jpg')"></div>
+  </div>
   <div class="hero-orb"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">3D Background Artist 쨌 Available for work</p>
@@ -1721,6 +1753,17 @@
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
     orb.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
   });
+
+  // Hero background slideshow
+  const heroSlides = document.querySelectorAll('.hero-bg-slide');
+  let activeHeroSlide = 0;
+  if (heroSlides.length > 1) {
+    setInterval(() => {
+      heroSlides[activeHeroSlide].classList.remove('active');
+      activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+      heroSlides[activeHeroSlide].classList.add('active');
+    }, 2000);
+  }
 
   // Works project gallery
   const projectImages = {
