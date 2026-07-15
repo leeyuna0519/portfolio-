@@ -1844,7 +1844,7 @@
       const videoId = filename.split(':')[1];
       galleryImage.style.display = 'none';
       galleryImage.classList.remove('changing');
-      galleryVideo.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`;
+      galleryVideo.src = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1&mute=1&playsinline=1`;
       galleryVideo.classList.add('active');
       galleryFile.textContent = 'YouTube Video';
     } else {
