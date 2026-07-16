@@ -969,18 +969,23 @@
     object-position: center 70%;
   }
 
-  #works .single-row {
+  #works .final-row {
     align-items: stretch;
-    height: clamp(145px, 13vw, 250px) !important;
+    height: clamp(170px, 16vw, 310px) !important;
   }
 
-  #works .single-row .j-item {
-    flex: 0 0 35% !important;
-    width: 35%;
+  #works .final-row .j-item:first-child {
+    flex: 0 0 calc(55% - 2px) !important;
+    width: calc(55% - 2px);
     margin-left: 0;
   }
 
-  #works .single-row .j-item img {
+  #works .final-row .j-item:nth-child(2) {
+    flex: 0 0 calc(45% - 2px) !important;
+    width: calc(45% - 2px);
+  }
+
+  #works .final-row .j-item img {
     object-fit: cover;
     object-position: center;
   }
@@ -1431,14 +1436,14 @@
     }
     #works .j-row,
     #works .j-row.large,
-    #works .single-row {
+    #works .final-row {
       height: auto !important;
     }
     #works .justified-grid > .j-row > .j-item {
       flex: none !important;
       width: 100%;
     }
-    #works .single-row .j-item {
+    #works .final-row .j-item {
       width: 100%;
       margin-left: 0;
       min-height: 250px;
@@ -1572,25 +1577,26 @@
       <h2 class="ref-title">WOR<span class="ac">KS</span></h2>
     </div>
     <div class="ref-line"></div>
-    <div class="ref-meta">9 Projects<br>Click - Detail</div>
+    <div class="ref-meta">10 Projects<br>Click - Detail</div>
   </div>
 
   <div class="justified-grid">
     <div class="j-row large">
-      <div class="j-item hover-swap" style="flex:6" data-project="2025-09-22" data-work="work-1" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-09-22/1.jpg" alt="2025-09-22 project"><img class="hover-preview" src="assets/work/2025-09-22/3.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-09-22</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
-      <div class="j-item portrait-card hover-swap" style="flex:4" data-project="2025-05-30" data-work="work-2" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-05-30/1.jpg" alt="2025-05-30 project"><img class="hover-preview" src="assets/work/2025-05-30/8.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-05-30</span></span><span class="ov-m">View Project · 11 Images</span></div></div></div>
+      <div class="j-item" style="flex:6" data-project="2026-01-10" data-work="work-10" role="button" tabindex="0"><img src="assets/work/2026-01-10/1.jpg" alt="2026-01-10 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2026-01-10</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
+      <div class="j-item hover-swap" style="flex:4" data-project="2025-09-22" data-work="work-1" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-09-22/1.jpg" alt="2025-09-22 project"><img class="hover-preview" src="assets/work/2025-09-22/3.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-09-22</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
     </div>
     <div class="j-row">
-      <div class="j-item hover-swap" style="flex:3.5" data-project="2025-04-09" data-work="work-3" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-04-09/1.jpg" alt="2025-04-09 project"><img class="hover-preview" src="assets/work/2025-04-09/2.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-09</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
-      <div class="j-item portrait-card hover-swap" style="flex:2" data-project="2025-04-08" data-work="work-4" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-04-08/1.jpg" alt="2025-04-08 project"><img class="hover-preview" src="assets/work/2025-04-08/3.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-08</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+      <div class="j-item portrait-card hover-swap" style="flex:3.5" data-project="2025-05-30" data-work="work-2" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-05-30/1.jpg" alt="2025-05-30 project"><img class="hover-preview" src="assets/work/2025-05-30/8.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-05-30</span></span><span class="ov-m">View Project · 11 Images</span></div></div></div>
+      <div class="j-item hover-swap" style="flex:2" data-project="2025-04-09" data-work="work-3" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-04-09/1.jpg" alt="2025-04-09 project"><img class="hover-preview" src="assets/work/2025-04-09/2.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-09</span></span><span class="ov-m">View Project · 3 Images</span></div></div></div>
+      <div class="j-item portrait-card hover-swap" style="flex:4.5" data-project="2025-04-08" data-work="work-4" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-04-08/1.jpg" alt="2025-04-08 project"><img class="hover-preview" src="assets/work/2025-04-08/3.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-04-08</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
+    </div>
+    <div class="j-row">
       <div class="j-item" style="flex:4.5" data-project="2025-03-21" data-work="work-5" role="button" tabindex="0"><img src="assets/work/2025-03-21/1.jpg" alt="2025-03-21 project"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-03-21</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
+      <div class="j-item hover-swap" style="flex:2.5" data-project="2025-02-18" data-work="work-6" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-02-18/01.jpg" alt="2025-02-18 project"><img class="hover-preview" src="assets/work/2025-02-18/02.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-02-18</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
+      <div class="j-item hover-swap" style="flex:3" data-project="2024-12-20" data-work="work-7" role="button" tabindex="0"><img class="main-preview" src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><img class="hover-preview" src="assets/work/2024-12-20/08.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
     </div>
-    <div class="j-row">
-      <div class="j-item hover-swap" style="flex:4.5" data-project="2025-02-18" data-work="work-6" role="button" tabindex="0"><img class="main-preview" src="assets/work/2025-02-18/01.jpg" alt="2025-02-18 project"><img class="hover-preview" src="assets/work/2025-02-18/02.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2025-02-18</span></span><span class="ov-m">View Project · 2 Images</span></div></div></div>
-      <div class="j-item hover-swap" style="flex:2.5" data-project="2024-12-20" data-work="work-7" role="button" tabindex="0"><img class="main-preview" src="assets/work/2024-12-20/01.jpg" alt="2024-12-20 project"><img class="hover-preview" src="assets/work/2024-12-20/08.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-12-20</span></span><span class="ov-m">View Project · 8 Images</span></div></div></div>
-      <div class="j-item hover-swap" style="flex:3" data-project="2024-11-21" data-work="work-8" role="button" tabindex="0"><img class="main-preview" src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><img class="hover-preview" src="assets/work/2024-11-21/06.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
-    </div>
-    <div class="j-row single-row">
+    <div class="j-row final-row">
+      <div class="j-item hover-swap" data-project="2024-11-21" data-work="work-8" role="button" tabindex="0"><img class="main-preview" src="assets/work/2024-11-21/01.jpg" alt="2024-11-21 project"><img class="hover-preview" src="assets/work/2024-11-21/06.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-11-21</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
       <div class="j-item hover-swap" data-project="2024-05-29" data-work="work-9" role="button" tabindex="0"><img class="main-preview" src="assets/work/2024-05-29/01.jpg" alt="2024-05-29 project"><img class="hover-preview" src="assets/work/2024-05-29/02.jpg" alt="" aria-hidden="true"><div class="j-ov"><div><span class="ov-t"><span class="ov-t-inner">2024-05-29</span></span><span class="ov-m">View Project · 6 Images</span></div></div></div>
     </div>
   </div>
@@ -1795,6 +1801,7 @@
 
   // Works project gallery
   const projectImages = {
+    '2026-01-10': ['1.jpg','2.jpg','3.jpg'],
     '2025-09-22': ['youtube:yNnaQ8ATNI8','1.jpg','2.jpg','3.jpg'],
     '2025-05-30': ['youtube:KEyjzcZx3qk','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg'],
     '2025-04-09': ['1.jpg','2.jpg','3.jpg'],
