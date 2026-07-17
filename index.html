@@ -757,7 +757,7 @@
 
   #hero {
     min-height: 680px;
-    padding: 0 40px 70px;
+    padding: 0 40px 20px;
     border-bottom: 1px solid rgba(244,240,0,.12);
   }
 
@@ -784,6 +784,34 @@
   .scroll-hint {
     font-family: var(--M);
     color: rgba(244,242,234,.64);
+  }
+
+  .hero-meta {
+    min-width: 0;
+  }
+
+  .hero-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 26px;
+  }
+
+  .hero-tool {
+    display: inline-flex;
+    align-items: center;
+    min-height: 21px;
+    padding: 3px 9px;
+    border: 1px solid rgba(244,242,234,.16);
+    background: rgba(5,5,5,.42);
+    color: rgba(244,242,234,.48);
+    font-family: var(--M);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1;
+    text-transform: uppercase;
+    backdrop-filter: blur(5px);
   }
 
   .layout-section {
@@ -1392,6 +1420,12 @@
   @media (max-width: 900px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
+    #hero { padding-bottom: 18px; }
+    .hero-bottom { gap: 20px; }
+    .hero-desc { font-size: 11px; }
+    .hero-tools { margin-top: 20px; gap: 3px; }
+    .hero-tool { padding: 3px 6px; font-size: 6px; }
+    .scroll-hint { flex-shrink: 0; }
     .ref-head {
       padding: 60px 24px 0;
       align-items: flex-start;
@@ -1497,7 +1531,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo nav-l">YUNA / 3D-BG</a>
+  <a href="#" class="nav-logo nav-l">YUNA</a>
   <div class="nav-r">
     <ul class="nav-links">
       <li><a href="#works">3D Works</a></li>
@@ -1521,16 +1555,28 @@
   </div>
   <div class="hero-orb"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">3D Background Artist 쨌 Available for work</p>
+    <p class="hero-eyebrow">3D Background Artist</p>
     <h1 class="hero-title">
       LEE<br>
       <em>YUNA</em>
     </h1>
     <div class="hero-bottom">
-      <p class="hero-desc">
-        Creating immersive 3D environments and<br>
-        backgrounds for games, film & animation.
-      </p>
+      <div class="hero-meta">
+        <p class="hero-desc">
+          Creating immersive 3D environments<br>
+          and backgrounds for games.
+        </p>
+        <div class="hero-tools" aria-label="Main tools">
+          <span class="hero-tool">UE5</span>
+          <span class="hero-tool">3DS Max</span>
+          <span class="hero-tool">ZBrush</span>
+          <span class="hero-tool">Substance</span>
+          <span class="hero-tool">Marmoset</span>
+          <span class="hero-tool">Rizom UV</span>
+          <span class="hero-tool">AI</span>
+          <span class="hero-tool">Unity</span>
+        </div>
+      </div>
       <span class="scroll-hint">Scroll</span>
     </div>
   </div>
