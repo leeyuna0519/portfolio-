@@ -1352,6 +1352,88 @@
   .fineart-1 img { object-position: 50% 55%; }
   .fineart-5 img { object-position: 52% 66%; }
 
+  body.fineart-lightbox-open {
+    overflow: hidden;
+  }
+
+  .fineart-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 320;
+    display: grid;
+    place-items: center;
+    padding: 40px 92px;
+    background: rgba(3,3,3,.96);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility .3s ease;
+  }
+
+  .fineart-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .fineart-lightbox-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(88vw, 1700px);
+    max-height: calc(100vh - 80px);
+    object-fit: contain;
+    box-shadow: 0 20px 80px rgba(0,0,0,.48);
+  }
+
+  .fineart-lightbox-close,
+  .fineart-lightbox-arrow {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(244,242,234,.2);
+    background: rgba(5,5,5,.58);
+    color: var(--txt);
+    font-family: var(--M);
+    transition: border-color .25s ease, background .25s ease;
+  }
+
+  .fineart-lightbox-close:hover,
+  .fineart-lightbox-arrow:hover {
+    border-color: var(--ac);
+    background: rgba(5,5,5,.88);
+  }
+
+  .fineart-lightbox-close {
+    top: 22px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    font-size: 19px;
+  }
+
+  .fineart-lightbox-arrow {
+    top: 50%;
+    width: 50px;
+    height: 72px;
+    transform: translateY(-50%);
+    font-size: 26px;
+  }
+
+  .fineart-lightbox-prev { left: 22px; }
+  .fineart-lightbox-next { right: 22px; }
+
+  .fineart-lightbox-count {
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+    color: rgba(244,242,234,.58);
+    font-family: var(--M);
+    font-size: 10px;
+    letter-spacing: .12em;
+  }
+
   #about.layout-section {
     padding-bottom: 110px;
   }
@@ -1514,6 +1596,22 @@
       margin: 0 0 6px;
       break-inside: avoid;
     }
+    .fineart-lightbox { padding: 58px 18px 70px; }
+    .fineart-lightbox-image {
+      max-width: calc(100vw - 36px);
+      max-height: calc(100vh - 128px);
+    }
+    .fineart-lightbox-arrow {
+      top: auto;
+      bottom: 14px;
+      width: 42px;
+      height: 42px;
+      transform: none;
+    }
+    .fineart-lightbox-prev { left: calc(50% - 50px); }
+    .fineart-lightbox-next { right: calc(50% - 50px); }
+    .fineart-lightbox-close { top: 12px; right: 14px; width: 40px; height: 40px; }
+    .fineart-lightbox-count { left: 14px; bottom: 27px; }
     .about-ref {
       grid-template-columns: 1fr;
       padding: 64px 24px 0;
@@ -1655,17 +1753,25 @@
   </div>
 
   <div class="fineart-grid">
-    <figure class="fineart-item fineart-1" style="--fineart-ratio:.73"><img src="assets/fineart/1.jpg" alt="Fine Art exhibition view" loading="lazy"></figure>
-    <figure class="fineart-item fineart-2" style="--fineart-ratio:.69"><img src="assets/fineart/2.jpg" alt="Narrative painting with animals" loading="lazy"></figure>
-    <figure class="fineart-item fineart-3" style="--fineart-ratio:.69"><img src="assets/fineart/3.jpg" alt="White ox among clouds painting" loading="lazy"></figure>
-    <figure class="fineart-item fineart-6" style="--fineart-ratio:.79"><img src="assets/fineart/6.jpg" alt="Bearded man portrait painting" loading="lazy"></figure>
-    <figure class="fineart-item fineart-4" style="--fineart-ratio:2.39"><img src="assets/fineart/4.jpg" alt="Dreamlike landscape painting" loading="lazy"></figure>
-    <figure class="fineart-item fineart-7" style="--fineart-ratio:1.26"><img src="assets/fineart/7.jpg" alt="Grapes painting on pink background" loading="lazy"></figure>
-    <figure class="fineart-item fineart-8" style="--fineart-ratio:1.26"><img src="assets/fineart/8.jpg" alt="Two white dogs painting" loading="lazy"></figure>
-    <figure class="fineart-item fineart-5" style="--fineart-ratio:1.33"><img src="assets/fineart/5.jpg" alt="Artist book exhibition detail" loading="lazy"></figure>
-    <figure class="fineart-item fineart-9" style="--fineart-ratio:1.3"><img src="assets/fineart/9.jpg" alt="Blue and green landscape painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-1" style="--fineart-ratio:.73" role="button" tabindex="0" aria-label="Open exhibition view"><img src="assets/fineart/1.jpg" alt="Fine Art exhibition view" loading="lazy"></figure>
+    <figure class="fineart-item fineart-2" style="--fineart-ratio:.69" role="button" tabindex="0" aria-label="Open narrative painting"><img src="assets/fineart/2.jpg" alt="Narrative painting with animals" loading="lazy"></figure>
+    <figure class="fineart-item fineart-3" style="--fineart-ratio:.69" role="button" tabindex="0" aria-label="Open white ox painting"><img src="assets/fineart/3.jpg" alt="White ox among clouds painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-6" style="--fineart-ratio:.79" role="button" tabindex="0" aria-label="Open portrait painting"><img src="assets/fineart/6.jpg" alt="Bearded man portrait painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-4" style="--fineart-ratio:2.39" role="button" tabindex="0" aria-label="Open landscape painting"><img src="assets/fineart/4.jpg" alt="Dreamlike landscape painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-7" style="--fineart-ratio:1.26" role="button" tabindex="0" aria-label="Open grapes painting"><img src="assets/fineart/7.jpg" alt="Grapes painting on pink background" loading="lazy"></figure>
+    <figure class="fineart-item fineart-8" style="--fineart-ratio:1.26" role="button" tabindex="0" aria-label="Open dog painting"><img src="assets/fineart/8.jpg" alt="Two white dogs painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-5" style="--fineart-ratio:1.33" role="button" tabindex="0" aria-label="Open exhibition detail"><img src="assets/fineart/5.jpg" alt="Artist book exhibition detail" loading="lazy"></figure>
+    <figure class="fineart-item fineart-9" style="--fineart-ratio:1.3" role="button" tabindex="0" aria-label="Open blue landscape painting"><img src="assets/fineart/9.jpg" alt="Blue and green landscape painting" loading="lazy"></figure>
   </div>
 </section>
+
+<div class="fineart-lightbox" id="fineart-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Fine Art image viewer">
+  <button class="fineart-lightbox-close" type="button" aria-label="Close image viewer">×</button>
+  <button class="fineart-lightbox-arrow fineart-lightbox-prev" type="button" aria-label="Previous Fine Art image">‹</button>
+  <img class="fineart-lightbox-image" src="" alt="">
+  <button class="fineart-lightbox-arrow fineart-lightbox-next" type="button" aria-label="Next Fine Art image">›</button>
+  <span class="fineart-lightbox-count" aria-live="polite"></span>
+</div>
 
 <!-- ABOUT -->
 <section id="about" class="layout-section">
