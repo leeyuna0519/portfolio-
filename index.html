@@ -2048,6 +2048,66 @@
   window.addEventListener('popstate', syncGalleryWithAddress);
   window.addEventListener('hashchange', syncGalleryWithAddress);
   syncGalleryWithAddress();
+
+  // Fine Art fullscreen viewer
+  const fineartItems = Array.from(document.querySelectorAll('.fineart-item'));
+  const fineartLightbox = document.getElementById('fineart-lightbox');
+  const fineartLightboxImage = fineartLightbox.querySelector('.fineart-lightbox-image');
+  const fineartLightboxCount = fineartLightbox.querySelector('.fineart-lightbox-count');
+  let activeFineartImage = 0;
+  let lastFineartTrigger = null;
+
+  function renderFineartImage() {
+    const sourceImage = fineartItems[activeFineartImage].querySelector('img');
+    fineartLightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+    fineartLightboxImage.alt = sourceImage.alt;
+    fineartLightboxCount.textContent = `${String(activeFineartImage + 1).padStart(2, '0')} / ${String(fineartItems.length).padStart(2, '0')}`;
+  }
+
+  function openFineartLightbox(index, trigger) {
+    activeFineartImage = index;
+    lastFineartTrigger = trigger;
+    renderFineartImage();
+    fineartLightbox.classList.add('open');
+    fineartLightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('fineart-lightbox-open');
+    fineartLightbox.querySelector('.fineart-lightbox-close').focus();
+  }
+
+  function closeFineartLightbox() {
+    fineartLightbox.classList.remove('open');
+    fineartLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('fineart-lightbox-open');
+    if (lastFineartTrigger) lastFineartTrigger.focus();
+  }
+
+  function stepFineartImage(direction) {
+    activeFineartImage = (activeFineartImage + direction + fineartItems.length) % fineartItems.length;
+    renderFineartImage();
+  }
+
+  fineartItems.forEach((item, index) => {
+    item.addEventListener('click', () => openFineartLightbox(index, item));
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openFineartLightbox(index, item);
+      }
+    });
+  });
+
+  fineartLightbox.querySelector('.fineart-lightbox-close').addEventListener('click', closeFineartLightbox);
+  fineartLightbox.querySelector('.fineart-lightbox-prev').addEventListener('click', () => stepFineartImage(-1));
+  fineartLightbox.querySelector('.fineart-lightbox-next').addEventListener('click', () => stepFineartImage(1));
+  fineartLightbox.addEventListener('click', event => {
+    if (event.target === fineartLightbox) closeFineartLightbox();
+  });
+  document.addEventListener('keydown', event => {
+    if (!fineartLightbox.classList.contains('open')) return;
+    if (event.key === 'Escape') closeFineartLightbox();
+    if (event.key === 'ArrowLeft') stepFineartImage(-1);
+    if (event.key === 'ArrowRight') stepFineartImage(1);
+  });
 </script>
 </body>
 </html>
