@@ -1312,8 +1312,9 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: repeat(13, minmax(0, 1fr));
     gap: 6px;
-    height: clamp(560px, 46vw, 780px);
-    margin: 34px 40px 0;
+    width: min(calc(100% - 80px), 1480px);
+    height: clamp(460px, 38vw, 650px);
+    margin: 34px auto 0;
   }
 
   .fineart-item {
@@ -1492,6 +1493,7 @@
       display: block;
       columns: 2;
       column-gap: 6px;
+      width: auto;
       height: auto;
       margin: 28px 24px 0;
     }
@@ -1704,7 +1706,7 @@
     cursor.style.top  = e.clientY + 'px';
   });
 
-  const hoverEls = document.querySelectorAll('a, .work-item, .j-item, .skill-tag, button');
+  const hoverEls = document.querySelectorAll('a, .work-item, .j-item, .fineart-item, .skill-tag, button');
   hoverEls.forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
