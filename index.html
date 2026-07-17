@@ -1307,6 +1307,50 @@
     grid-column: span 3;
   }
 
+  .fineart-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(13, minmax(0, 1fr));
+    gap: 6px;
+    height: clamp(560px, 46vw, 780px);
+    margin: 34px 40px 0;
+  }
+
+  .fineart-item {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    min-height: 0;
+    background: #111;
+  }
+
+  .fineart-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+  }
+
+  .fineart-item:hover img {
+    transform: scale(1.035);
+    filter: brightness(1.03) contrast(1.02);
+  }
+
+  .fineart-1 { grid-column: 1 / 5; grid-row: 1 / 14; }
+  .fineart-2 { grid-column: 5 / 7; grid-row: 1 / 7; }
+  .fineart-3 { grid-column: 5 / 7; grid-row: 7 / 14; }
+  .fineart-6 { grid-column: 7 / 10; grid-row: 1 / 11; }
+  .fineart-4 { grid-column: 7 / 10; grid-row: 11 / 14; }
+  .fineart-7 { grid-column: 10 / 13; grid-row: 1 / 6; }
+  .fineart-8 { grid-column: 10 / 13; grid-row: 6 / 11; }
+  .fineart-5 { grid-column: 10 / 11; grid-row: 11 / 14; }
+  .fineart-9 { grid-column: 11 / 13; grid-row: 11 / 14; }
+
+  .fineart-1 img { object-position: 50% 55%; }
+  .fineart-5 img { object-position: 52% 66%; }
+
   #about.layout-section {
     padding-bottom: 110px;
   }
@@ -1443,6 +1487,30 @@
       grid-column: span 1;
       grid-row: span 1;
       min-height: 230px;
+    }
+    .fineart-grid {
+      display: block;
+      columns: 2;
+      column-gap: 6px;
+      height: auto;
+      margin: 28px 24px 0;
+    }
+    .fineart-item,
+    .fineart-1,
+    .fineart-2,
+    .fineart-3,
+    .fineart-4,
+    .fineart-5,
+    .fineart-6,
+    .fineart-7,
+    .fineart-8,
+    .fineart-9 {
+      grid-column: auto;
+      grid-row: auto;
+      width: 100%;
+      aspect-ratio: var(--fineart-ratio);
+      margin: 0 0 6px;
+      break-inside: avoid;
     }
     .about-ref {
       grid-template-columns: 1fr;
@@ -1584,10 +1652,16 @@
     <div class="ref-line"></div>
   </div>
 
-  <div class="sd-grid">
-    <div class="sd-item wide"><img src="assets/hero-balista.png" alt="Fine art project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">FINE ART 01</span></span><span class="ov-m">Fine Art</span></div></div></div>
-    <div class="sd-item wide"><img src="assets/hero-balista.png" alt="Fine art project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">FINE ART 02</span></span><span class="ov-m">Fine Art</span></div></div></div>
-    <div class="sd-item wide"><img src="assets/hero-balista.png" alt="Fine art project preview"><div class="sd-ov"><div><span class="ov-t"><span class="ov-t-inner">FINE ART 03</span></span><span class="ov-m">Fine Art</span></div></div></div>
+  <div class="fineart-grid">
+    <figure class="fineart-item fineart-1" style="--fineart-ratio:.73"><img src="assets/fineart/1.jpg" alt="Fine Art exhibition view" loading="lazy"></figure>
+    <figure class="fineart-item fineart-2" style="--fineart-ratio:.69"><img src="assets/fineart/2.jpg" alt="Narrative painting with animals" loading="lazy"></figure>
+    <figure class="fineart-item fineart-3" style="--fineart-ratio:.69"><img src="assets/fineart/3.jpg" alt="White ox among clouds painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-6" style="--fineart-ratio:.79"><img src="assets/fineart/6.jpg" alt="Bearded man portrait painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-4" style="--fineart-ratio:2.39"><img src="assets/fineart/4.jpg" alt="Dreamlike landscape painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-7" style="--fineart-ratio:1.26"><img src="assets/fineart/7.jpg" alt="Grapes painting on pink background" loading="lazy"></figure>
+    <figure class="fineart-item fineart-8" style="--fineart-ratio:1.26"><img src="assets/fineart/8.jpg" alt="Two white dogs painting" loading="lazy"></figure>
+    <figure class="fineart-item fineart-5" style="--fineart-ratio:1.33"><img src="assets/fineart/5.jpg" alt="Artist book exhibition detail" loading="lazy"></figure>
+    <figure class="fineart-item fineart-9" style="--fineart-ratio:1.3"><img src="assets/fineart/9.jpg" alt="Blue and green landscape painting" loading="lazy"></figure>
   </div>
 </section>
 
