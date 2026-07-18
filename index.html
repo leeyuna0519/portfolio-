@@ -798,6 +798,10 @@
     text-shadow: 0 0 16px rgba(244,240,0,.18);
   }
 
+  .ref-title.intro-title {
+    font-size: clamp(36px, 7.2vw, 112px);
+  }
+
   .ref-line {
     flex: 1;
     display: flex;
@@ -1981,7 +1985,7 @@
   <div class="ref-head">
     <div class="ref-head-main">
       <span class="ref-tag">About</span>
-      <h2 class="ref-title">ENV<span class="ac">ART</span></h2>
+      <h2 class="ref-title intro-title">INTRO<span class="ac">DUCTION</span></h2>
     </div>
     <div class="ref-line"></div>
   </div>
@@ -1991,6 +1995,43 @@
       <p><strong>3D background artist</strong> focused on environment, atmosphere, and prop detail. I build scenes from modeling and material work to lighting and final composition.</p>
       <p>My portfolio centers on <strong>space, mood, scale, and storytelling</strong>, with attention to wood, metal, fabric, stone, foliage, and aged surface details.</p>
       <p>Tools: 3ds Max, Blender, Unreal Engine, Substance Painter, ZBrush, Marmoset, Photoshop.</p>
+      <a class="profile-button" href="#profile">Profile</a>
+    </div>
+  </div>
+</section>
+
+<section class="profile-page" id="profile" aria-hidden="true" aria-label="Lee Yuna profile">
+  <header class="profile-top">
+    <span>Profile / Lee Yuna</span>
+    <a class="profile-close" href="#about">Close ×</a>
+  </header>
+  <div class="profile-content">
+    <img class="profile-photo" src="assets/profile/lee-yuna.jpg" alt="Lee Yuna profile photo">
+    <p class="profile-role">3D Environment Artist</p>
+    <h2 class="profile-name">LEE YUNA</h2>
+
+    <div class="profile-section">
+      <h3 class="profile-section-title">Tools</h3>
+      <div class="profile-tools">
+        <figure class="profile-tool"><img src="assets/profile/tools/3ds-max.png" alt="3ds Max"><figcaption class="profile-tool-name">3ds Max</figcaption></figure>
+        <figure class="profile-tool dark-mark"><img src="assets/profile/tools/zbrush.png" alt="ZBrush"><figcaption class="profile-tool-name">ZBrush</figcaption></figure>
+        <figure class="profile-tool"><img src="assets/profile/tools/premiere.png" alt="Adobe Premiere Pro"><figcaption class="profile-tool-name">Premiere Pro</figcaption></figure>
+        <figure class="profile-tool"><img src="assets/profile/tools/substance-painter.png" alt="Substance 3D Painter"><figcaption class="profile-tool-name">Substance Painter</figcaption></figure>
+        <figure class="profile-tool dark-mark"><img src="assets/profile/tools/unreal-engine.png" alt="Unreal Engine"><figcaption class="profile-tool-name">Unreal Engine</figcaption></figure>
+        <figure class="profile-tool"><img src="assets/profile/tools/rizomuv.png" alt="RizomUV"><figcaption class="profile-tool-name">RizomUV</figcaption></figure>
+        <figure class="profile-tool dark-mark"><img src="assets/profile/tools/unity.png" alt="Unity"><figcaption class="profile-tool-name">Unity</figcaption></figure>
+        <figure class="profile-tool"><img src="assets/profile/tools/marmoset.png" alt="Marmoset Toolbag"><figcaption class="profile-tool-name">Marmoset</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3 class="profile-section-title">Contact</h3>
+      <p class="profile-info-value"><a href="mailto:dldbsk5683@gmail.com">dldbsk5683@gmail.com</a></p>
+    </div>
+
+    <div class="profile-section">
+      <h3 class="profile-section-title">Education</h3>
+      <p class="profile-info-value"><span class="profile-education-year">2019 – 2024</span> · 용인대학교 회화학과 학사</p>
     </div>
   </div>
 </section>
@@ -2323,6 +2364,29 @@
     if (event.key === 'ArrowLeft') stepFineartImage(-1);
     if (event.key === 'ArrowRight') stepFineartImage(1);
   });
+
+  // Profile page
+  const profilePage = document.getElementById('profile');
+
+  function syncProfilePage() {
+    const shouldOpen = location.hash === '#profile';
+    const wasOpen = profilePage.classList.contains('open');
+    profilePage.classList.toggle('open', shouldOpen);
+    profilePage.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    document.body.classList.toggle('profile-open', shouldOpen);
+    if (shouldOpen && !wasOpen) {
+      profilePage.scrollTop = 0;
+      profilePage.querySelector('.profile-close').focus();
+    }
+  }
+
+  window.addEventListener('hashchange', syncProfilePage);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && profilePage.classList.contains('open')) {
+      location.hash = 'about';
+    }
+  });
+  syncProfilePage();
 </script>
 </body>
 </html>
