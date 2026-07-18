@@ -1489,6 +1489,193 @@
     font-weight: 400;
   }
 
+  .profile-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    width: fit-content;
+    margin-top: 18px;
+    padding: 10px 14px;
+    border: 1px solid rgba(244,242,234,.22);
+    color: rgba(244,242,234,.74);
+    font-family: var(--M);
+    font-size: 9px;
+    letter-spacing: .16em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .25s ease, border-color .25s ease, background .25s ease;
+  }
+
+  .profile-button::after {
+    content: '→';
+    color: var(--ac);
+  }
+
+  .profile-button:hover {
+    color: var(--txt);
+    border-color: var(--ac);
+    background: rgba(244,240,0,.045);
+  }
+
+  body.profile-open {
+    overflow: hidden;
+  }
+
+  .profile-page {
+    position: fixed;
+    inset: 0;
+    z-index: 280;
+    display: block;
+    overflow-y: auto;
+    padding: 0 28px 100px;
+    background:
+      linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+      #101318;
+    background-size: 100% 56px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(18px);
+    transition: opacity .35s ease, visibility .35s ease, transform .35s ease;
+  }
+
+  .profile-page.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .profile-top {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 920px);
+    height: 56px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(244,242,234,.1);
+    background: rgba(16,19,24,.88);
+    backdrop-filter: blur(10px);
+    color: rgba(244,242,234,.52);
+    font-family: var(--M);
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .profile-close {
+    color: rgba(244,242,234,.72);
+    text-decoration: none;
+    transition: color .25s ease;
+  }
+
+  .profile-close:hover { color: var(--ac); }
+
+  .profile-content {
+    width: min(100%, 720px);
+    margin: 0 auto;
+    padding-top: 92px;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: clamp(190px, 19vw, 250px);
+    aspect-ratio: .86;
+    display: block;
+    margin: 0 auto 34px;
+    object-fit: cover;
+    object-position: 69% 57%;
+    filter: saturate(.84) contrast(1.04);
+  }
+
+  .profile-role {
+    color: var(--txt);
+    font-family: var(--D);
+    font-size: clamp(20px, 2.3vw, 32px);
+    line-height: 1;
+  }
+
+  .profile-name {
+    margin-top: 8px;
+    color: rgba(244,242,234,.82);
+    font-family: var(--B);
+    font-size: clamp(27px, 3vw, 42px);
+    font-weight: 500;
+    letter-spacing: -.045em;
+  }
+
+  .profile-section {
+    margin-top: 88px;
+  }
+
+  .profile-section-title {
+    margin-bottom: 30px;
+    color: rgba(244,242,234,.84);
+    font-family: var(--B);
+    font-size: clamp(24px, 2.4vw, 34px);
+    font-weight: 500;
+    letter-spacing: -.035em;
+    text-transform: uppercase;
+  }
+
+  .profile-tools {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .profile-tool {
+    display: flex;
+    min-height: 142px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid rgba(244,242,234,.09);
+    background: rgba(255,255,255,.018);
+  }
+
+  .profile-tool img {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+  }
+
+  .profile-tool.dark-mark img {
+    filter: grayscale(1) invert(1);
+    opacity: .82;
+  }
+
+  .profile-tool-name {
+    color: rgba(244,242,234,.45);
+    font-family: var(--M);
+    font-size: 7px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .profile-info-value {
+    color: rgba(244,242,234,.86);
+    font-family: var(--B);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .profile-info-value a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(244,242,234,.22);
+  }
+
+  .profile-education-year {
+    font-family: var(--M);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
   @media (max-width: 900px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
@@ -1629,6 +1816,11 @@
       border-left: 0;
       padding-left: 0;
     }
+    .profile-page { padding: 0 18px 76px; }
+    .profile-content { padding-top: 64px; }
+    .profile-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .profile-tool { min-height: 122px; }
+    .profile-section { margin-top: 64px; }
   }
 </style>
 </head>
