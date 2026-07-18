@@ -1556,7 +1556,7 @@
   .profile-close:hover { color: var(--ac); }
 
   .profile-content {
-    width: min(100%, 720px);
+    width: min(100%, 960px);
     margin: 0 auto;
     padding-top: 92px;
     text-align: center;
@@ -1604,24 +1604,26 @@
 
   .profile-tools {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(9, minmax(74px, 1fr));
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
   }
 
   .profile-tool {
     display: flex;
-    min-height: 142px;
+    min-height: 104px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 7px;
     border: 1px solid rgba(244,242,234,.09);
     background: rgba(255,255,255,.018);
   }
 
   .profile-tool img {
-    width: 68px;
-    height: 68px;
+    width: 46px;
+    height: 46px;
     object-fit: contain;
   }
 
@@ -1633,7 +1635,7 @@
   .profile-tool-name {
     color: rgba(244,242,234,.45);
     font-family: var(--M);
-    font-size: 7px;
+    font-size: 6px;
     letter-spacing: .1em;
     text-transform: uppercase;
   }
@@ -1797,8 +1799,8 @@
     }
     .profile-page { padding: 0 18px 76px; }
     .profile-content { padding-top: 64px; }
-    .profile-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .profile-tool { min-height: 122px; }
+    .profile-tools { grid-template-columns: repeat(9, 72px); gap: 6px; }
+    .profile-tool { min-height: 100px; }
     .profile-section { margin-top: 64px; }
   }
 </style>
@@ -1989,6 +1991,7 @@
         <figure class="profile-tool"><img src="assets/profile/tools/3ds-max.png" alt="3ds Max"><figcaption class="profile-tool-name">3ds Max</figcaption></figure>
         <figure class="profile-tool dark-mark"><img src="assets/profile/tools/zbrush.png" alt="ZBrush"><figcaption class="profile-tool-name">ZBrush</figcaption></figure>
         <figure class="profile-tool"><img src="assets/profile/tools/premiere.png" alt="Adobe Premiere Pro"><figcaption class="profile-tool-name">Premiere Pro</figcaption></figure>
+        <figure class="profile-tool"><img src="assets/profile/tools/photoshop.png" alt="Adobe Photoshop"><figcaption class="profile-tool-name">Photoshop</figcaption></figure>
         <figure class="profile-tool"><img src="assets/profile/tools/substance-painter.png" alt="Substance 3D Painter"><figcaption class="profile-tool-name">Substance Painter</figcaption></figure>
         <figure class="profile-tool dark-mark"><img src="assets/profile/tools/unreal-engine.png" alt="Unreal Engine"><figcaption class="profile-tool-name">Unreal Engine</figcaption></figure>
         <figure class="profile-tool"><img src="assets/profile/tools/rizomuv.png" alt="RizomUV"><figcaption class="profile-tool-name">RizomUV</figcaption></figure>
