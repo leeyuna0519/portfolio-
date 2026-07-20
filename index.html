@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LEE YUNA __ 3D ARTIST</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;700&family=Inter:wght@500;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,12 +57,16 @@
     mix-blend-mode: normal;
   }
   .nav-logo {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
+    display: block;
+    width: 48px;
+    height: 48px;
     text-decoration: none;
+  }
+  .nav-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .nav-links {
     display: flex;
@@ -1801,7 +1806,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo nav-l">YUNA</a>
+  <a href="#" class="nav-logo nav-l" aria-label="Go to home"><img src="assets/logo.png" alt="Lee Yuna logo"></a>
   <div class="nav-r">
     <ul class="nav-links">
       <li><a href="#works">3D Works</a></li>
