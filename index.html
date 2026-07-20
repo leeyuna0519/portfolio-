@@ -2127,6 +2127,9 @@
   const workRoutes = Object.fromEntries(
     Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
   );
+  document.querySelectorAll('.ov-date').forEach(date => {
+    date.textContent = date.textContent.slice(0, 7);
+  });
 
   function applyGalleryZoom() {
     galleryImage.style.setProperty('--gallery-zoom', galleryZoomScale.toFixed(2));
