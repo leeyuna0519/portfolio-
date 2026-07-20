@@ -1902,7 +1902,6 @@
     <div class="gallery-description">
       <span class="gallery-description-kicker">Project Info</span>
       <p class="gallery-description-text"></p>
-      <div class="gallery-detail-row"><span class="gallery-detail-label">Tools</span><span class="gallery-detail-value gallery-tools"></span></div>
       <div class="gallery-detail-row"><span class="gallery-detail-label">Scope</span><span class="gallery-detail-value gallery-scope"></span></div>
       <div class="gallery-detail-row"><span class="gallery-detail-label">Pipeline</span><span class="gallery-detail-value gallery-pipeline"></span></div>
     </div>
@@ -2080,7 +2079,6 @@
 
   const projectDetails = {
     description: '환경과 공간의 분위기를 중심으로 제작한 3D 프로젝트입니다. 모델링부터 재질, 조명, 최종 화면 구성까지의 작업 과정을 담았습니다.',
-    tools: '3ds Max · ZBrush · Substance Painter · RizomUV · Marmoset Toolbag · Unreal Engine',
     scope: 'Environment · Prop · Material · Lighting',
     pipeline: '3ds Max / Blender → ZBrush → Substance Painter → Unreal Engine'
   };
@@ -2105,7 +2103,6 @@
   const galleryCount = gallery.querySelector('.gallery-count');
   const galleryThumbnails = gallery.querySelector('.gallery-thumbnails');
   const galleryDescriptionText = gallery.querySelector('.gallery-description-text');
-  const galleryTools = gallery.querySelector('.gallery-tools');
   const galleryScope = gallery.querySelector('.gallery-scope');
   const galleryPipeline = gallery.querySelector('.gallery-pipeline');
   let activeProject = '';
@@ -2203,7 +2200,6 @@
     lastGalleryTrigger = trigger;
     galleryTitle.textContent = projectTitles[project] || project;
     galleryDescriptionText.textContent = projectDescriptions[project] || projectDetails.description;
-    galleryTools.textContent = projectDetails.tools;
     galleryScope.textContent = projectScopes[project] || projectDetails.scope;
     galleryPipeline.textContent = projectPipelines[project] || projectDetails.pipeline;
     buildGalleryThumbnails();
