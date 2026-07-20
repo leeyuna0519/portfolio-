@@ -1902,9 +1902,8 @@
     <div class="gallery-description">
       <span class="gallery-description-kicker">Project Info</span>
       <p class="gallery-description-text"></p>
-      <div class="gallery-detail-row"><span class="gallery-detail-label">Role</span><span class="gallery-detail-value gallery-role"></span></div>
+      <div class="gallery-detail-row"><span class="gallery-detail-label">Tools</span><span class="gallery-detail-value gallery-tools"></span></div>
       <div class="gallery-detail-row"><span class="gallery-detail-label">Scope</span><span class="gallery-detail-value gallery-scope"></span></div>
-      <div class="gallery-detail-row"><span class="gallery-detail-label">Focus</span><span class="gallery-detail-value gallery-focus"></span></div>
       <div class="gallery-detail-row"><span class="gallery-detail-label">Pipeline</span><span class="gallery-detail-value gallery-pipeline"></span></div>
     </div>
     <div class="gallery-thumbnails" aria-label="Project images"></div>
@@ -2081,9 +2080,8 @@
 
   const projectDetails = {
     description: '환경과 공간의 분위기를 중심으로 제작한 3D 프로젝트입니다. 모델링부터 재질, 조명, 최종 화면 구성까지의 작업 과정을 담았습니다.',
-    role: '3D Background Artist',
+    tools: '3ds Max · Blender · ZBrush · Substance Painter · Unreal Engine',
     scope: 'Environment · Prop · Material · Lighting',
-    focus: 'Scene Composition · Mood · Detail',
     pipeline: '3ds Max / Blender → ZBrush → Substance Painter → Unreal Engine'
   };
 
@@ -2095,9 +2093,8 @@
   const galleryCount = gallery.querySelector('.gallery-count');
   const galleryThumbnails = gallery.querySelector('.gallery-thumbnails');
   const galleryDescriptionText = gallery.querySelector('.gallery-description-text');
-  const galleryRole = gallery.querySelector('.gallery-role');
+  const galleryTools = gallery.querySelector('.gallery-tools');
   const galleryScope = gallery.querySelector('.gallery-scope');
-  const galleryFocus = gallery.querySelector('.gallery-focus');
   const galleryPipeline = gallery.querySelector('.gallery-pipeline');
   let activeProject = '';
   let activeImage = 0;
@@ -2194,9 +2191,8 @@
     lastGalleryTrigger = trigger;
     galleryTitle.textContent = projectTitles[project] || project;
     galleryDescriptionText.textContent = projectDetails.description;
-    galleryRole.textContent = projectDetails.role;
+    galleryTools.textContent = projectDetails.tools;
     galleryScope.textContent = projectDetails.scope;
-    galleryFocus.textContent = projectDetails.focus;
     galleryPipeline.textContent = projectDetails.pipeline;
     buildGalleryThumbnails();
     renderGalleryImage();
