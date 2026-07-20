@@ -1268,6 +1268,7 @@
   .gallery-thumbnails::-webkit-scrollbar { width: 0; }
 
   .gallery-thumb {
+    position: relative;
     display: block;
     width: 100%;
     aspect-ratio: 16 / 6;
@@ -2105,6 +2106,7 @@
   let galleryTouchY = 0;
   let galleryZoomActive = false;
   let galleryZoomScale = 1;
+  const workAssetVersion = '20260721-logo-v3';
   const workRoutes = Object.fromEntries(
     Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
   );
@@ -2140,7 +2142,7 @@
       galleryVideo.classList.remove('active');
       galleryVideo.src = '';
       galleryImage.style.display = 'block';
-      const nextSrc = `assets/work/${activeProject}/${filename}`;
+      const nextSrc = `assets/work/${activeProject}/${filename}?v=${workAssetVersion}`;
       const preload = new Image();
       preload.onload = () => {
         galleryImage.classList.toggle('portrait', preload.naturalHeight > preload.naturalWidth);
@@ -2176,7 +2178,7 @@
         const videoId = filename.split(':')[1];
         button.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="">`;
       } else {
-        button.innerHTML = `<img src="assets/work/${activeProject}/${filename}" alt="">`;
+        button.innerHTML = `<img src="assets/work/${activeProject}/${filename}?v=${workAssetVersion}" alt="">`;
       }
       button.addEventListener('click', () => {
         activeImage = index;
@@ -2237,6 +2239,7 @@
     activeImage = (activeImage + direction + length) % length;
     renderGalleryImage();
   }
+
 
   document.querySelectorAll('#works .j-item[data-project]').forEach(item => {
     item.addEventListener('click', () => openGallery(item.dataset.project, item, true));
