@@ -2089,6 +2089,14 @@
     '2026-07-17': '중세 전장을 배경으로 운용되는 대형 공성 병기, 발리스타를 제작했습니다. 거친 야외 환경에서 오랜 시간 사용된 병기의 무게감과 실전적인 분위기가 느껴지도록 전체 형태와 구조를 설계했습니다. 목재와 금속 재질의 대비, 반복된 사용으로 생긴 마모와 오염 표현에 집중했으며, 사자앰블럼, 밧줄 및 장식 요소의 디테일을 통해 병기의 기능성과 설득력을 높였습니다. 주변의 건조한 지형과 따뜻한 자연광을 통해, 전투의 긴장감이 찾아오기 전 평화로운 한때를 표현했습니다.'
   };
 
+  const projectScopes = {
+    '2026-07-17': 'Prop Modeling · Sculpting · Texturing · Environment Art · Lighting'
+  };
+
+  const projectPipelines = {
+    '2026-07-17': '3ds Max → ZBrush → Marmoset Toolbag → Substance Painter → Unreal Engine'
+  };
+
   const gallery = document.getElementById('project-gallery');
   const galleryImage = gallery.querySelector('.gallery-image');
   const galleryVideo = gallery.querySelector('.gallery-video');
@@ -2196,8 +2204,8 @@
     galleryTitle.textContent = projectTitles[project] || project;
     galleryDescriptionText.textContent = projectDescriptions[project] || projectDetails.description;
     galleryTools.textContent = projectDetails.tools;
-    galleryScope.textContent = projectDetails.scope;
-    galleryPipeline.textContent = projectDetails.pipeline;
+    galleryScope.textContent = projectScopes[project] || projectDetails.scope;
+    galleryPipeline.textContent = projectPipelines[project] || projectDetails.pipeline;
     buildGalleryThumbnails();
     renderGalleryImage();
     gallery.classList.add('open');
