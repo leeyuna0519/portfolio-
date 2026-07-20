@@ -2127,8 +2127,15 @@
   const workRoutes = Object.fromEntries(
     Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
   );
-  document.querySelectorAll('.ov-date').forEach(date => {
-    date.textContent = date.textContent.slice(0, 7);
+  const projectDisplayDates = {
+    '2026-07-17': '2026.06',
+    '2026-01-10': '2026.04',
+    '2025-05-30': '2025.08',
+    '2024-05-29': '2024.06'
+  };
+  document.querySelectorAll('#works .j-item[data-project]').forEach(item => {
+    const date = item.querySelector('.ov-date');
+    if (date) date.textContent = projectDisplayDates[item.dataset.project] || date.textContent.slice(0, 7);
   });
 
   function applyGalleryZoom() {
