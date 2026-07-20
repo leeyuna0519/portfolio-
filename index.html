@@ -1120,6 +1120,9 @@
   }
 
   .gallery-image {
+    --gallery-zoom: 1;
+    --gallery-zoom-x: 50%;
+    --gallery-zoom-y: 50%;
     display: block;
     width: auto;
     height: auto;
@@ -1129,8 +1132,15 @@
     object-position: center;
     flex: 0 1 auto;
     opacity: 1;
-    transition: opacity .16s ease;
+    transform: scale(var(--gallery-zoom));
+    transform-origin: var(--gallery-zoom-x) var(--gallery-zoom-y);
+    cursor: zoom-in;
+    user-select: none;
+    transition: opacity .16s ease, transform .22s ease-out;
   }
+
+  body.gallery-open .gallery-image { cursor: zoom-in !important; }
+  body.gallery-open .gallery-image.zoomed { cursor: zoom-out !important; }
 
   .gallery-image.portrait {
     width: auto;
@@ -1148,6 +1158,7 @@
     aspect-ratio: 16 / 9;
     border: 0;
     background: #000;
+    pointer-events: none;
   }
 
   .gallery-video.active { display: block; }
@@ -2164,11 +2175,27 @@
   let lastGalleryTrigger = null;
   let galleryWheelLocked = false;
   let galleryTouchY = 0;
+  let galleryZoomActive = false;
+  let galleryZoomScale = 1;
   const workRoutes = Object.fromEntries(
     Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
   );
 
+  function applyGalleryZoom() {
+    galleryImage.style.setProperty('--gallery-zoom', galleryZoomScale.toFixed(2));
+    galleryImage.classList.toggle('zoomed', galleryZoomActive);
+  }
+
+  function resetGalleryZoom() {
+    galleryZoomActive = false;
+    galleryZoomScale = 1;
+    galleryImage.style.setProperty('--gallery-zoom-x', '50%');
+    galleryImage.style.setProperty('--gallery-zoom-y', '50%');
+    applyGalleryZoom();
+  }
+
   function renderGalleryImage() {
+    resetGalleryZoom();
     const files = projectImages[activeProject];
     const filename = files[activeImage];
     const isVideo = filename.startsWith('youtube:');
@@ -2253,6 +2280,7 @@
   }
 
   function closeGallery(updateAddress = true) {
+    resetGalleryZoom();
     gallery.classList.remove('open');
     gallery.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('gallery-open');
@@ -2295,9 +2323,31 @@
   gallery.querySelector('.gallery-close').addEventListener('click', closeGallery);
   gallery.querySelector('.gallery-prev').addEventListener('click', () => stepGallery(-1));
   gallery.querySelector('.gallery-next').addEventListener('click', () => stepGallery(1));
+  galleryImage.addEventListener('click', event => {
+    if (galleryVideo.classList.contains('active')) return;
+    if (galleryZoomActive) {
+      resetGalleryZoom();
+      return;
+    }
+
+    const bounds = galleryImage.getBoundingClientRect();
+    const zoomX = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const zoomY = ((event.clientY - bounds.top) / bounds.height) * 100;
+    galleryImage.style.setProperty('--gallery-zoom-x', `${Math.max(0, Math.min(100, zoomX))}%`);
+    galleryImage.style.setProperty('--gallery-zoom-y', `${Math.max(0, Math.min(100, zoomY))}%`);
+    galleryZoomActive = true;
+    galleryZoomScale = 1.6;
+    applyGalleryZoom();
+  });
   gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
   gallery.addEventListener('wheel', event => {
     event.preventDefault();
+    if (galleryZoomActive && !galleryVideo.classList.contains('active')) {
+      const zoomDirection = event.deltaY < 0 ? 1 : -1;
+      galleryZoomScale = Math.max(1.1, Math.min(4, galleryZoomScale + zoomDirection * .2));
+      applyGalleryZoom();
+      return;
+    }
     if (galleryWheelLocked || Math.abs(event.deltaY) < 8) return;
     galleryWheelLocked = true;
     stepGallery(event.deltaY > 0 ? 1 : -1);
@@ -2312,6 +2362,10 @@
   }, { passive: true });
   document.addEventListener('keydown', event => {
     if (!gallery.classList.contains('open')) return;
+    if (event.key === 'Escape' && galleryZoomActive) {
+      resetGalleryZoom();
+      return;
+    }
     if (event.key === 'Escape') closeGallery();
     if (event.key === 'ArrowLeft') stepGallery(-1);
     if (event.key === 'ArrowRight') stepGallery(1);
