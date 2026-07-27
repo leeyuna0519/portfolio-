@@ -1132,8 +1132,8 @@
 
   .gallery-image {
     --gallery-zoom: 1;
-    --gallery-zoom-x: 50%;
-    --gallery-zoom-y: 50%;
+    --gallery-pan-x: 0px;
+    --gallery-pan-y: 0px;
     display: block;
     width: auto;
     height: auto;
@@ -1143,15 +1143,22 @@
     object-position: center;
     flex: 0 1 auto;
     opacity: 1;
-    transform: scale(var(--gallery-zoom));
-    transform-origin: var(--gallery-zoom-x) var(--gallery-zoom-y);
+    transform: translate3d(var(--gallery-pan-x), var(--gallery-pan-y), 0) scale(var(--gallery-zoom));
+    transform-origin: center;
     cursor: zoom-in;
     user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
     transition: opacity .16s ease, transform .22s ease-out;
+    will-change: transform;
   }
 
   body.gallery-open .gallery-image { cursor: zoom-in !important; }
-  body.gallery-open .gallery-image.zoomed { cursor: zoom-out !important; }
+  body.gallery-open .gallery-image.zoomed { cursor: grab !important; }
+  body.gallery-open .gallery-image.zoomed.dragging {
+    cursor: grabbing !important;
+    transition: opacity .16s ease;
+  }
 
   .gallery-image.portrait {
     width: auto;
@@ -2144,6 +2151,13 @@
   let galleryTouchY = 0;
   let galleryZoomActive = false;
   let galleryZoomScale = 1;
+  let galleryPanX = 0;
+  let galleryPanY = 0;
+  let galleryDragPointerId = null;
+  let galleryDragStartX = 0;
+  let galleryDragStartY = 0;
+  let galleryDragOriginX = 0;
+  let galleryDragOriginY = 0;
   const workAssetVersion = '20260721-logo-v5';
   const workRoutes = Object.fromEntries(
     Array.from(document.querySelectorAll('#works .j-item[data-work]')).map(item => [item.dataset.work, item])
@@ -2161,14 +2175,25 @@
 
   function applyGalleryZoom() {
     galleryImage.style.setProperty('--gallery-zoom', galleryZoomScale.toFixed(2));
+    galleryImage.style.setProperty('--gallery-pan-x', `${galleryPanX.toFixed(1)}px`);
+    galleryImage.style.setProperty('--gallery-pan-y', `${galleryPanY.toFixed(1)}px`);
     galleryImage.classList.toggle('zoomed', galleryZoomActive);
+  }
+
+  function clampGalleryPan() {
+    const maxX = galleryImage.offsetWidth * (galleryZoomScale - 1) / 2;
+    const maxY = galleryImage.offsetHeight * (galleryZoomScale - 1) / 2;
+    galleryPanX = Math.max(-maxX, Math.min(maxX, galleryPanX));
+    galleryPanY = Math.max(-maxY, Math.min(maxY, galleryPanY));
   }
 
   function resetGalleryZoom() {
     galleryZoomActive = false;
     galleryZoomScale = 1;
-    galleryImage.style.setProperty('--gallery-zoom-x', '50%');
-    galleryImage.style.setProperty('--gallery-zoom-y', '50%');
+    galleryPanX = 0;
+    galleryPanY = 0;
+    galleryDragPointerId = null;
+    galleryImage.classList.remove('dragging');
     applyGalleryZoom();
   }
 
@@ -2300,40 +2325,63 @@
   gallery.querySelector('.gallery-close').addEventListener('click', closeGallery);
   gallery.querySelector('.gallery-prev').addEventListener('click', () => stepGallery(-1));
   gallery.querySelector('.gallery-next').addEventListener('click', () => stepGallery(1));
-  galleryImage.addEventListener('click', event => {
+  galleryImage.addEventListener('dblclick', event => {
+    event.preventDefault();
     if (galleryVideo.classList.contains('active')) return;
     if (galleryZoomActive) {
       resetGalleryZoom();
       return;
     }
 
-    const bounds = galleryImage.getBoundingClientRect();
-    const zoomX = ((event.clientX - bounds.left) / bounds.width) * 100;
-    const zoomY = ((event.clientY - bounds.top) / bounds.height) * 100;
-    galleryImage.style.setProperty('--gallery-zoom-x', `${Math.max(0, Math.min(100, zoomX))}%`);
-    galleryImage.style.setProperty('--gallery-zoom-y', `${Math.max(0, Math.min(100, zoomY))}%`);
     galleryZoomActive = true;
-    galleryZoomScale = 1.6;
+    galleryZoomScale = 2.5;
+    galleryPanX = 0;
+    galleryPanY = 0;
     applyGalleryZoom();
   });
+  galleryImage.addEventListener('dragstart', event => event.preventDefault());
+  galleryImage.addEventListener('pointerdown', event => {
+    if (!galleryZoomActive || galleryVideo.classList.contains('active')) return;
+    event.preventDefault();
+    galleryDragPointerId = event.pointerId;
+    galleryDragStartX = event.clientX;
+    galleryDragStartY = event.clientY;
+    galleryDragOriginX = galleryPanX;
+    galleryDragOriginY = galleryPanY;
+    galleryImage.setPointerCapture(event.pointerId);
+    galleryImage.classList.add('dragging');
+  });
+  galleryImage.addEventListener('pointermove', event => {
+    if (event.pointerId !== galleryDragPointerId) return;
+    galleryPanX = galleryDragOriginX + event.clientX - galleryDragStartX;
+    galleryPanY = galleryDragOriginY + event.clientY - galleryDragStartY;
+    clampGalleryPan();
+    applyGalleryZoom();
+  });
+  function endGalleryDrag(event) {
+    if (event.pointerId !== galleryDragPointerId) return;
+    galleryDragPointerId = null;
+    galleryImage.classList.remove('dragging');
+    if (galleryImage.hasPointerCapture(event.pointerId)) {
+      galleryImage.releasePointerCapture(event.pointerId);
+    }
+  }
+  galleryImage.addEventListener('pointerup', endGalleryDrag);
+  galleryImage.addEventListener('pointercancel', endGalleryDrag);
   gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
   gallery.addEventListener('wheel', event => {
     event.preventDefault();
-    if (galleryZoomActive && !galleryVideo.classList.contains('active')) {
-      const zoomDirection = event.deltaY < 0 ? 1 : -1;
-      galleryZoomScale = Math.max(1.1, Math.min(4, galleryZoomScale + zoomDirection * .2));
-      applyGalleryZoom();
-      return;
-    }
     if (galleryWheelLocked || Math.abs(event.deltaY) < 8) return;
     galleryWheelLocked = true;
     stepGallery(event.deltaY > 0 ? 1 : -1);
     setTimeout(() => { galleryWheelLocked = false; }, 520);
   }, { passive: false });
   gallery.addEventListener('touchstart', event => {
+    if (galleryZoomActive) return;
     galleryTouchY = event.touches[0].clientY;
   }, { passive: true });
   gallery.addEventListener('touchend', event => {
+    if (galleryZoomActive) return;
     const distance = galleryTouchY - event.changedTouches[0].clientY;
     if (Math.abs(distance) > 45) stepGallery(distance > 0 ? 1 : -1);
   }, { passive: true });
